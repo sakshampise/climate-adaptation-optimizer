@@ -1,0 +1,7 @@
+zone_id,label,latitude,longitude,flood_risk_index,heat_risk_index,exposure_index,vulnerability_index,critical_infrastructure_index,data_status,source_note
+Z01,Sangamwadi Confluence (Demo),18.5362,73.8786,88,62,70,68,85,simulated,Mula-Mutha river confluence zone; high flash-flood vulnerability modeled from historical monsoons.
+Z02,Shivajinagar Urban Core (Demo),18.5314,73.8446,58,84,92,54,90,simulated,Dense commercial and transport core; elevated urban heat island effect and high critical transit infrastructure.
+Z03,Hadapsar Corridor (Demo),18.5089,73.9260,64,88,80,76,65,simulated,High-density mixed industrial-residential area; elevated surface temperatures and working-class population clusters.
+Z04,Katraj Lake Catchment (Demo),18.4575,73.8677,82,50,65,58,60,simulated,Southern foothill runoff and lake overflow catchment; vulnerable to heavy localized monsoon precipitation.
+Z05,Yerawada Riverfront Settlements (Demo),18.5529,73.8930,86,82,88,92,62,simulated,Low-elevation riverfront informal settlements; high compounding flood vulnerability and heat exposure.
+Z06,Hinjawadi Tech Corridor (Demo),18.5913,73.7389,45,78,75,40,94,simulated,Major IT and economic hub with high impervious surface fraction and high-value economic infrastructure assets.

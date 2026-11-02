@@ -1,0 +1,13 @@
+project_id,zone_id,project_name,intervention_type,cost_crore,feasible,flood_benefit_score,heat_benefit_score,equity_benefit_score,infrastructure_benefit_score,urgency_score,evidence_quality,data_status,source_note
+P01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,True,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.
+P02,Z01,Automated Tidal Gates & Floodwall Reinforcement,grey_infrastructure,4.8,True,95,15,45,92,80,high,simulated,Engineered flood barrier protecting low-lying arterial transit bridges from backwater inundation.
+P03,Z02,Permeable Pavement & Street Storm Infiltration,hybrid,2.5,True,72,58,55,85,75,medium,simulated,Retrofits urban core pedestrian corridors to reduce street-level ponding and waterlogging.
+P04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,True,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.
+P05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,True,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.
+P06,Z03,Canal Desilting & Natural Retention Pond,hybrid,3.4,True,84,45,72,70,78,medium,simulated,Enhances stormwater holding capacity and de-clogs industrial discharge drainage channels.
+P07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,True,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.
+P08,Z04,Hill Slope Afforestation & Contour Trenches,nature_based,2.2,True,78,65,58,62,68,medium,simulated,Stops rapid hillside stormwater runoff and soil erosion along Katraj ghat ridges.
+P09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,True,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.
+P10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,True,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.
+P11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,True,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.
+P12,Z06,Subsurface Storm Cistern & Water Reclamation,grey_infrastructure,4.5,True,82,20,35,96,60,medium,simulated,Large-volume underground retention tank preserving key IT connectivity during extreme cloudbursts.
