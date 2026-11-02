@@ -11,28 +11,28 @@ Master task tracker for the **AI-Assisted Climate Adaptation Investment Prioriti
   - Establish `CONTEXT.md`, `TASKS.md`, `README.md`, `.gitignore`, `requirements.txt`.
   - Status: Completed.
 
-- [ ] **Task 1.2: Data Fixtures Creation**
+- [x] **Task 1.2: Data Fixtures Creation**
   - Create `data/zones.csv` with 6 realistic, illustrative Pune planning areas with exact schema.
   - Create `data/projects.csv` with 12 intervention packages (2 mutually exclusive alternatives per zone).
   - Create `data/sources.md` documenting data provenance, assumptions, and coordinate methodology.
-  - Status: Pending.
+  - Status: Completed.
 
-- [ ] **Task 1.3: Data Loader & Schema Validator**
+- [x] **Task 1.3: Data Loader & Schema Validator**
   - Implement `src/data_loader.py` with `load_inputs(data_dir: str)`.
   - Validate column presence, strict types, unique IDs, foreign keys, row counts, ranges (0-100), positive costs.
-  - Status: Pending.
+  - Status: Completed.
 
-- [ ] **Task 1.4: Data Loader Unit Tests**
+- [x] **Task 1.4: Data Loader Unit Tests**
   - Implement `tests/test_data_loader.py`.
   - Verify valid fixture loading, error reporting for invalid/missing/malformed data.
   - Run and verify all tests pass.
-  - Status: Pending.
+  - Status: Completed (9/9 tests passing).
 
-- [ ] **Task 1.5: Application Skeleton**
+- [x] **Task 1.5: Application Skeleton**
   - Create minimal `app.py` with Streamlit.
   - Display project header, data provenance banner, and raw data overview tables.
   - Verify application launches and executes without errors.
-  - Status: Pending.
+  - Status: Completed.
 
 ---
 
