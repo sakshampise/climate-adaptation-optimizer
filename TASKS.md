@@ -38,17 +38,17 @@ Master task tracker for the **AI-Assisted Climate Adaptation Investment Prioriti
 
 ## Milestone 2: Portfolio Optimization Engine (Target: Nov 4)
 
-- [ ] **Task 2.1: Mathematical Optimizer Implementation**
+- [x] **Task 2.1: Mathematical Optimizer Implementation**
   - Implement `src/optimizer.py` with `OBJECTIVE_WEIGHTS` and `solve_portfolio()`.
   - Implement exact enumeration and PuLP-compatible formulation with constraint enforcement (budget, max 1 per zone, feasibility).
   - Implement deterministic tie-breaking (lower cost, then lexicographical order).
-  - Status: Pending.
+  - Status: Completed.
 
-- [ ] **Task 2.2: Optimizer Unit Tests**
+- [x] **Task 2.2: Optimizer Unit Tests**
   - Implement `tests/test_optimizer.py`.
   - Test zero budget, unconstrained budget, budget tie-breaking, mutually exclusive zone constraint, infeasible project exclusion.
   - Test hand-calculable test cases against verified manual scores.
-  - Status: Pending.
+  - Status: Completed (9/9 tests passing; 18/18 total suite).
 
 ---
 
