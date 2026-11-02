@@ -54,28 +54,28 @@ Master task tracker for the **AI-Assisted Climate Adaptation Investment Prioriti
 
 ## Milestone 3: Explanations, Visualizations & Scenarios (Target: Nov 5 - 6)
 
-- [ ] **Task 3.1: Deterministic Explanation Engine**
+- [x] **Task 3.1: Deterministic Explanation Engine**
   - Implement `src/explanations.py` with structured narratives for selected/unselected interventions.
-  - Status: Pending.
+  - Status: Completed (Unit tests in `tests/test_explanations.py` passing).
 
-- [ ] **Task 3.2: Spatial & Comparative Visualizations**
+- [x] **Task 3.2: Spatial & Comparative Visualizations**
   - Implement `src/map_view.py` with interactive map and robust fallback table.
   - Add Plotly charts for budget allocation and resilience score breakdowns.
-  - Status: Pending.
+  - Status: Completed.
 
-- [ ] **Task 3.3: Multi-Scenario Comparison & CSV Export**
+- [x] **Task 3.3: Multi-Scenario Comparison & CSV Export**
   - Implement side-by-side comparison across 4 presets in `app.py`.
   - Provide CSV download feature.
-  - Status: Pending.
+  - Status: Completed.
 
 ---
 
 ## Milestone 4: Feature Freeze & Integration Verification (Target: Nov 7 - 8)
 
-- [ ] **Task 4.1: End-to-End Testing & Hardening**
+- [x] **Task 4.1: End-to-End Testing & Hardening**
   - Verify full user flow from slider adjustment to scenario export.
   - Ensure zero unhandled exceptions.
-  - Status: Pending.
+  - Status: Completed (22/22 unit and integration tests passing; Streamlit smoke verified).
 
 ---
 
