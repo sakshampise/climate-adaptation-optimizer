@@ -7,6 +7,7 @@ Theme: AI for Climate Change
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from src.data_loader import load_inputs, DataValidationError
 from src.optimizer import solve_portfolio, OBJECTIVE_WEIGHTS, PRESET_DISPLAY_NAMES
 from src.explanations import generate_portfolio_explanation
@@ -61,7 +62,7 @@ def main():
 
     budget_crore = st.sidebar.slider(
         "Total Adaptation Budget (₹ Crore)",
-        min_value=1.0,
+        min_value=0.0,
         max_value=15.0,
         value=10.0,
         step=0.5,
@@ -134,12 +135,12 @@ def main():
             "project_id", "zone_id", "project_name", "intervention_type",
             "cost_crore", "flood_benefit_score", "heat_benefit_score",
             "equity_benefit_score", "infrastructure_benefit_score", "urgency_score",
-            "evidence_quality", "data_status"
+            "evidence_quality", "data_status", "source_note"
         ]].copy()
         table_df.columns = [
             "Project ID", "Zone ID", "Project Package", "Type",
             "Cost (₹ Cr)", "Flood Pts", "Heat Pts", "Equity Pts",
-            "Infra Pts", "Urgency", "Evidence", "Status"
+            "Infra Pts", "Urgency", "Evidence", "Status", "Source Note"
         ]
         st.dataframe(table_df, use_container_width=True, hide_index=True)
 
