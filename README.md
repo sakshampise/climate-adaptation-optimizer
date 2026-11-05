@@ -30,25 +30,49 @@ Cities face compounding climate threats (flooding, extreme heat, environmental d
 ## Directory Structure
 
 ```text
-├── CONTEXT.md             # Authoritative project specification and data contracts
-├── TASKS.md               # Implementation roadmap and task tracking
-├── README.md              # Project overview and setup instructions
-├── requirements.txt       # Project dependencies
-├── data/
-│   ├── zones.csv          # 6 illustrative planning zones in Pune
-│   ├── projects.csv       # 12 adaptation intervention packages
-│   └── sources.md         # Data provenance and methodology notes
-├── src/
-│   ├── __init__.py
-│   ├── data_loader.py     # Schema validation and data ingestion
-│   ├── optimizer.py       # Multi-criteria portfolio optimization
-│   ├── explanations.py    # Deterministic narrative and trade-off generation
-│   └── map_view.py        # Spatial mapping and visualization fallbacks
-├── tests/
-│   ├── __init__.py
-│   ├── test_data_loader.py
-│   └── test_optimizer.py
-└── app.py                 # Streamlit interactive application entry point
+PCCOE Indradhanu/
+│
+├── README.md                      # Project overview and setup instructions
+├── requirements.txt               # Project dependencies
+├── app.py                         # Streamlit interactive application entry point
+│
+├── PROJECT DOCS/                  # Project source of truth
+│   ├── CONTEXT.md                 # Authoritative project specification and data contracts
+│   ├── ROADMAP.md                 # Development milestones and delivery roadmap
+│   ├── TASKS.md                   # Task backlog and implementation progress
+│   ├── DECISIONS.md               # Architecture Decision Records (ADRs)
+│   ├── DATA POLICY.md             # Data governance, provenance, and 9 project rules
+│   └── CHANGELOG.md               # Version history and change log
+│
+├── AI HANDOFFS/                   # Communication archive across AI agents and team
+│   ├── ChatGPT/                   # Specifications and reviews
+│   ├── Gemini/                    # Mathematical proposals and reviews
+│   └── Antigravity/               # Implementation reports and debug logs
+│
+├── data/                          # Data lifecycle assets
+│   ├── raw/                       # Immutable raw datasets
+│   ├── processed/                 # Cleaned and standardized data
+│   ├── reference/                 # Canonical baseline fixtures (zones.csv, projects.csv)
+│   ├── zones.csv                  # 6 illustrative planning zones in Pune
+│   ├── projects.csv               # 12 adaptation intervention packages
+│   ├── sources.md                 # Data provenance and methodology notes
+│   └── README.md                  # Data manifest and lifecycle guide
+│
+├── src/                           # Application core logic
+│   ├── data_processing/           # Ingestion, validation, and schema enforcement
+│   ├── risk_model/                # Multi-hazard, vulnerability, and exposure models
+│   ├── optimizer/                 # Portfolio optimization engine (exact + PuLP)
+│   ├── utils/                     # Shared helpers, narrative generation, map view
+│   ├── data_loader.py             # Active runtime data loader
+│   ├── optimizer.py               # Active runtime optimizer
+│   ├── explanations.py            # Active runtime explanation generator
+│   └── map_view.py                # Active runtime spatial map and fallback
+│
+├── components/                    # Reusable Streamlit UI components
+├── tests/                         # Pytest validation and integration test suite
+├── exports/                       # Optimization result exports and comparison CSVs
+├── docs/                          # Additional technical documentation and guides
+└── assets/                        # Visual assets, logos, and icons
 ```
 
 ---

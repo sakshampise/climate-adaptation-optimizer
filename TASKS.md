@@ -1,87 +1,62 @@
-# Implementation Roadmap & Task Backlog (`TASKS.md`)
+# Master Task Backlog & Implementation Tracker (`TASKS.md`)
 
-Master task tracker for the **AI-Assisted Climate Adaptation Investment Prioritization** platform.
-
----
-
-## Milestone 1: Baseline Setup & Data Foundation (Target: Nov 3)
-
-- [x] **Task 1.1: Project Baseline & Source of Truth**
-  - Initialize Git repository.
-  - Establish `CONTEXT.md`, `TASKS.md`, `README.md`, `.gitignore`, `requirements.txt`.
-  - Status: Completed.
-
-- [x] **Task 1.2: Data Fixtures Creation**
-  - Create `data/zones.csv` with 6 realistic, illustrative Pune planning areas with exact schema.
-  - Create `data/projects.csv` with 12 intervention packages (2 mutually exclusive alternatives per zone).
-  - Create `data/sources.md` documenting data provenance, assumptions, and coordinate methodology.
-  - Status: Completed.
-
-- [x] **Task 1.3: Data Loader & Schema Validator**
-  - Implement `src/data_loader.py` with `load_inputs(data_dir: str)`.
-  - Validate column presence, strict types, unique IDs, foreign keys, row counts, ranges (0-100), positive costs.
-  - Status: Completed.
-
-- [x] **Task 1.4: Data Loader Unit Tests**
-  - Implement `tests/test_data_loader.py`.
-  - Verify valid fixture loading, error reporting for invalid/missing/malformed data.
-  - Run and verify all tests pass.
-  - Status: Completed (9/9 tests passing).
-
-- [x] **Task 1.5: Application Skeleton**
-  - Create minimal `app.py` with Streamlit.
-  - Display project header, data provenance banner, and raw data overview tables.
-  - Verify application launches and executes without errors.
-  - Status: Completed.
+**Project:** AI-Assisted Climate Adaptation Investment Prioritization  
+**Target Geography:** Pune, Maharashtra, India  
+**Reference Date:** November 5, 2026  
+**Status:** Active Master Backlog (Reconciled with workspace audit)
 
 ---
 
-## Milestone 2: Portfolio Optimization Engine (Target: Nov 4)
+## 1. Master Task Schedule
 
-- [x] **Task 2.1: Mathematical Optimizer Implementation**
-  - Implement `src/optimizer.py` with `OBJECTIVE_WEIGHTS` and `solve_portfolio()`.
-  - Implement exact enumeration and PuLP-compatible formulation with constraint enforcement (budget, max 1 per zone, feasibility).
-  - Implement deterministic tie-breaking (lower cost, then lexicographical order).
-  - Status: Completed.
-
-- [x] **Task 2.2: Optimizer Unit Tests**
-  - Implement `tests/test_optimizer.py`.
-  - Test zero budget, unconstrained budget, budget tie-breaking, mutually exclusive zone constraint, infeasible project exclusion.
-  - Test hand-calculable test cases against verified manual scores.
-  - Status: Completed (9/9 tests passing; 18/18 total suite).
-
----
-
-## Milestone 3: Explanations, Visualizations & Scenarios (Target: Nov 5 - 6)
-
-- [x] **Task 3.1: Deterministic Explanation Engine**
-  - Implement `src/explanations.py` with structured narratives for selected/unselected interventions.
-  - Status: Completed (Unit tests in `tests/test_explanations.py` passing).
-
-- [x] **Task 3.2: Spatial & Comparative Visualizations**
-  - Implement `src/map_view.py` with interactive map and robust fallback table.
-  - Add Plotly charts for budget allocation and resilience score breakdowns.
-  - Status: Completed.
-
-- [x] **Task 3.3: Multi-Scenario Comparison & CSV Export**
-  - Implement side-by-side comparison across 4 presets in `app.py`.
-  - Provide CSV download feature.
-  - Status: Completed.
+| Task ID | Task Description | Owner | Priority | Target Deadline | Status | Dependencies |
+|---|---|---|---|---|---|---|
+| **M1-T1** | Project baseline setup, repository initialization, and documentation suite | Antigravity | P0 | 2026-11-03 | **Completed** | None |
+| **M1-T2** | Canonical data fixtures creation (`data/reference/`: 6 zones, 12 projects, sources) | Human / Antigravity | P0 | 2026-11-03 | **Completed** | M1-T1 |
+| **M1-T3** | Schema ingestion and strict boundary validation module (`src/data_loader.py`) | Antigravity | P0 | 2026-11-03 | **Completed** | M1-T2 |
+| **M1-T4** | Data loader unit test suite with 100% boundary check coverage | Antigravity | P0 | 2026-11-03 | **Completed** | M1-T3 |
+| **M1-T5** | Initial Streamlit interactive prototype skeleton (`app.py`) | Antigravity | P1 | 2026-11-03 | **Completed** | M1-T3 |
+| **M2-T1** | Exact portfolio optimization engine with budget and GUB exclusivity constraints | Antigravity | P0 | 2026-11-04 | **Completed** | M1-T3 |
+| **M2-T2** | Objective presets and normalized multi-criteria weighting formulation | Gemini / Antigravity | P0 | 2026-11-04 | **Completed** | M2-T1 |
+| **M2-T3** | Optimizer unit test suite (budget boundaries, feasibility, deterministic tie-breaking) | Antigravity | P0 | 2026-11-04 | **Completed** | M2-T1 |
+| **M3-T1** | Deterministic trade-off and allocation rationale engine (`src/explanations.py`) | Antigravity | P1 | 2026-11-05 | **Completed** | M2-T1 |
+| **M3-T2** | Geospatial visualization with graceful tabular fallback (`src/map_view.py`) | Antigravity | P1 | 2026-11-05 | **Completed** | M1-T2 |
+| **M3-T3** | Multi-scenario comparison matrix and CSV export in prototype `app.py` | Antigravity | P0 | 2026-11-05 | **Completed** | M2-T1, M3-T1 |
+| **M3-T4** | Independent mathematical model audit (assumptions, constraints, objective function) | Gemini | P0 | 2026-11-06 | **In Progress** | M2-T1, M2-T2 |
+| **M3-T5** | UI component decomposition & UX specifications review | ChatGPT | P1 | 2026-11-06 | **Not Started** | M3-T3 |
+| **M4-T1** | Formal review of ADR-009 (Application Modularization Proposal) | Human / All | P1 | 2026-11-07 | **Proposed (Not Approved)** | ADR-009 |
+| **M4-T2** | Standalone risk model calculation submodule (`src/risk_model/`) | Gemini / Antigravity | P1 | 2026-11-07 | **Not Started** | M3-T4, M4-T1 |
+| **M4-T3** | Decomposition of monolithic `app.py` into modular Streamlit `components/` | ChatGPT / Antigravity | P1 | 2026-11-08 | **Not Started** | M3-T5, M4-T1 |
+| **M4-T4** | End-to-end regression testing and integration test hardening | Antigravity | P0 | 2026-11-08 | **In Progress** (22/22 baseline passing) | M4-T2, M4-T3 |
+| **M5-T1** | Clean environment deployment verification and packaging audit | Antigravity | P0 | 2026-11-09 | **Pending** | M4-T4 |
+| **M5-T2** | Presentation slide deck, demonstration script, and civic impact briefing | Human / All | P0 | 2026-11-10 | **Pending** | M5-T1 |
 
 ---
 
-## Milestone 4: Feature Freeze & Integration Verification (Target: Nov 7 - 8)
+## 2. Milestone Summary & Progress State (as of November 5, 2026)
 
-- [x] **Task 4.1: End-to-End Testing & Hardening**
-  - Verify full user flow from slider adjustment to scenario export.
-  - Ensure zero unhandled exceptions.
-  - Status: Completed (22/22 unit and integration tests passing; Streamlit smoke verified).
+### Milestone 1: Baseline Setup & Data Foundation
+- **Target Deadline:** November 3, 2026
+- **Status:** **100% Complete**
+- **Artifacts:** `PROJECT DOCS/`, `data/reference/`, `src/data_loader.py`, `tests/test_data_loader.py`.
 
----
+### Milestone 2: Portfolio Optimization Engine
+- **Target Deadline:** November 4, 2026
+- **Status:** **100% Complete**
+- **Artifacts:** `src/optimizer.py`, `tests/test_optimizer.py`. Exact search over 729 portfolios operational.
 
-## Milestone 5: Submission & Presentation Readiness (Target: Nov 9 - 10)
+### Milestone 3: Explanations, Analytics & Validation
+- **Target Deadline:** November 5–6, 2026 (Active Milestone)
+- **Status:** **In Progress (75% Complete)**
+- **Completed:** Working prototype implementations of explanations, map rendering, multi-scenario comparisons, and CSV export.
+- **Pending:** Independent mathematical review by Gemini (M3-T4) and UI specification review by ChatGPT (M3-T5).
 
-- [ ] **Task 5.1: Final Rehearsal & Documentation Polish**
-  - Verification on clean browser and deployment check.
-  - Presentation slide alignment with prototype demo.
-  - Status: Pending.
+### Milestone 4: Architecture Modularization & Feature Freeze
+- **Target Deadline:** November 7–8, 2026
+- **Status:** **Proposed / Not Started**
+- **Pending Decisions:** ADR-009 review. Existing codebase functions as a working prototype; refactoring into `components/` and `src/risk_model/` will proceed only upon explicit human approval.
+
+### Milestone 5: Submission & Presentation Readiness
+- **Target Deadline:** November 9–10, 2026
+- **Status:** **Pending**
+- **Focus:** Final dry runs, jury presentation alignment, and packaging.

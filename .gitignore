@@ -1,3 +1,11 @@
+# Environments and secrets
+.env
+.env.*
+*.env
+*.key
+*.pem
+
+# Python caches & build artifacts
 __pycache__/
 *.py[cod]
 *$py.class
@@ -10,6 +18,11 @@ ENV/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# OS and Editor files
 .DS_Store
 Thumbs.db
 *.log
+.vscode/
+.idea/
+

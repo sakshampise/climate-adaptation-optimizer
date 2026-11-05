@@ -91,6 +91,22 @@ Candidate adaptation interventions (exactly 12 rows, 2 per zone).
 | `data_status` | string | `verified`, `derived`, `simulated` | Data provenance status |
 | `source_note` | string | Non-empty text | Baseline data notes / citations |
 
+### 3.3 Data Provenance Taxonomy & Grounding Rules
+
+To uphold rigorous civic data integrity and prevent misleading representations, all project data fields must strictly adhere to the following taxonomy:
+
+1. **`verified`**:
+   - Represents empirical, ground-truth data directly sourced from authoritative municipal, state, or national records (e.g., official Government of India Census records, verified municipal ward boundary coordinates).
+2. **`derived`**:
+   - Represents metrics computed via deterministic mathematical, spatial, or statistical models using verified inputs (e.g., population density calculated from verified population and GIS polygon area).
+3. **`simulated`**:
+   - Represents synthetic, literature-grounded illustrative values designed for prototype evaluation and scenario testing (e.g., relative flood/heat risk indices, estimated intervention package costs and scores).
+   - Grounded in published Pune environmental reports (PMC Environment Status Reports, Mula-Mutha flood studies), but explicitly marked as simulated.
+
+**Grounding & Integrity Rules:**
+- **No Invented Sources:** Never cite fictitious reports, false academic papers, or nonexistent municipal departments. If a value is simulated, explicitly declare it as `simulated` in `data_status` and describe the simulation rationale in `source_note`.
+- **Preserve Provenance Transparency:** The UI and exported CSV files must preserve and surface the `data_status` and `source_note` fields so stakeholders are never misled.
+
 ---
 
 ## 4. Mathematical & Optimization Contract
@@ -148,8 +164,14 @@ When two or more portfolios achieve identical total score:
 
 ---
 
-## 6. Guardrails & Claim Discipline
+## 6. Guardrails & Claim Discipline (The 9 Project Rules)
 
-1. **Explicit Simulation Disclaimers:** All synthetic data points are prominently labeled as simulated.
-2. **No False Certainty:** Scores are relative planning units, not exact casualty or damage forecasts.
-3. **Human-in-the-Loop:** The system serves as a decision-support aid; final allocation decisions rest with municipal authorities.
+1. **Focused MVP Scope:** The MVP is focused strictly on six illustrative Pune areas (`Z01`–`Z06`) and twelve intervention packages (`P01`–`P12`, 2 mutually exclusive per area).
+2. **Dual Primary Hazards:** The primary hazards are monsoon flooding and extreme heat.
+3. **Four Objective Presets:** The application supports four policy presets (*Flood Priority*, *Heat Priority*, *Balanced Resilience*, *Social & Climate Equity*).
+4. **Budget Feasibility:** Investment selection must strictly respect the available capital budget constraint entered by the user.
+5. **Transparency & Export:** Results must include structured, deterministic explanations and one-click CSV export.
+6. **Explicit Labeling:** Simulated data must always be explicitly labeled as `simulated` across all tables, cards, and exported records.
+7. **No False Authenticity:** Never present simulated values as verified Pune measurements or official municipal ground truth.
+8. **No Unvalidated Risk Claims:** Recommendations must not claim validated real-world risk reduction percentages, lives saved, or casualty prevention figures.
+9. **Decision-Support Guardrail:** Any optimization result must be treated as an advisory decision-support tool, not an automated executive mandate replacing on-ground municipal and engineering due diligence.
