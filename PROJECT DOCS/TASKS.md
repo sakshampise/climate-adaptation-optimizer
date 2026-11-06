@@ -25,16 +25,16 @@
 | **M3-T3** | Multi-scenario comparison matrix and CSV export in prototype `app.py` | Antigravity | P0 | 2026-11-05 | **Completed** | M2-T1, M3-T1 |
 | **M3-T4** | Independent mathematical model audit | Gemini (Audit) / ChatGPT (Review) | P0 | 2026-11-05 | **Documented / Reviewed** | M2-T1, M2-T2 |
 | **M3-T5** | UI component audit, bug fixes (Plotly import, zero budget, source note) & regression tests | Antigravity | P1 | 2026-11-05 | **Completed** | M3-T3 |
-| **M4-T1** | Formal review of ADR-009 (Application Modularization Proposal) | Human Lead / ChatGPT | P1 | 2026-11-07 | **Proposed (Not Approved)** | ADR-009 |
-| **M4-T2** | Standalone risk model calculation submodule (`src/risk_model/`) | ChatGPT / Antigravity | P1 | 2026-11-07 | **Not Started** | M3-T4, M4-T1 |
-| **M4-T3** | Decomposition of monolithic `app.py` into modular Streamlit `components/` | ChatGPT / Antigravity | P1 | 2026-11-08 | **Not Started** | M3-T5, M4-T1 |
+| **M4-T1** | Formal review & revision of ADR-009 (Scoped UI Component Decomposition) | Human Lead / ChatGPT | P1 | 2026-11-07 | **Spec Prepared / Awaiting Approval** | ADR-009 |
+| **M4-T2** | Standalone risk model calculation submodule (`src/risk_model/`) | ChatGPT / Antigravity | P1 | 2026-11-07 | **Deferred (Out of Scope for M4)** | M3-T4, M4-T1 |
+| **M4-T3** | Decomposition of monolithic `app.py` into modular Streamlit `components/` | ChatGPT / Antigravity | P1 | 2026-11-08 | **Spec Prepared / Awaiting Approval** | M3-T5, M4-T1 |
 | **M4-T4** | End-to-end regression testing and integration test hardening | Antigravity | P0 | 2026-11-08 | **In Progress** (27/27 passing) | M4-T2, M4-T3 |
 | **M5-T1** | Clean environment deployment verification and packaging audit | Antigravity | P0 | 2026-11-09 | **Pending** | M4-T4 |
 | **M5-T2** | Presentation slide deck, demonstration script, and civic impact briefing | Human Lead / All | P0 | 2026-11-10 | **Pending** | M5-T1 |
 
 ---
 
-## 2. Milestone Summary & Progress State (as of November 5, 2026)
+## 2. Milestone Summary & Progress State (as of November 6, 2026)
 
 ### Milestone 1: Baseline Setup & Data Foundation
 - **Target Deadline:** November 3, 2026
@@ -47,7 +47,7 @@
 - **Artifacts:** `src/optimizer.py`, `tests/test_optimizer.py`. Exact search over 729 portfolios operational.
 
 ### Milestone 3: Explanations, Analytics & Validation
-- **Target Deadline:** November 5–6, 2026 (Active Milestone)
+- **Target Deadline:** November 5–6, 2026
 - **Status:** **100% Complete**
 - **Completed:** Working prototype implementations of explanations, map rendering, multi-scenario comparisons, CSV export.
 - **Audit Review Status (M3-T4):** Reviewed by ChatGPT; verified exact optimization and mutual exclusivity already exist. Multiplicative risk proposal rejected for frozen MVP (additive model retained).
@@ -55,8 +55,8 @@
 
 ### Milestone 4: Architecture Modularization & Feature Freeze
 - **Target Deadline:** November 7–8, 2026
-- **Status:** **Proposed / Not Started**
-- **Pending Decisions:** ADR-009 review. Existing codebase functions as a working prototype; refactoring into `components/` and `src/risk_model/` will proceed only upon explicit human approval.
+- **Status:** **Specification Prepared / Awaiting Human Approval**
+- **Pending Decisions:** Human Project Lead approval of revised ADR-009 (Part A: Scoped UI decomposition). Parts B (Core package migration) and C (Standalone risk model) are formally deferred. Refactoring implementation will commence only after explicit approval.
 
 ### Milestone 5: Submission & Presentation Readiness
 - **Target Deadline:** November 9–10, 2026

@@ -1,45 +1,41 @@
 # Next Action
 
 ## Current Project Status
-Milestone 3 (Explanations, Analytics & Validation) is **100% Complete**. The UI has been fully audited against the frozen MVP requirements; verified bugs in `app.py` (missing `plotly.graph_objects as go` import, zero-budget slider bound `min_value=0.0`, and missing `source_note` in table/export) have been fixed. Comprehensive regression tests were added in `tests/test_ui_regression.py`. All 27 unit and integration tests pass cleanly. Streamlit application startup was smoke-tested with zero errors.
+Milestone 4 (Architecture Modularization & Feature Freeze) architecture review and implementation specification have been fully prepared. ADR-009 has been formally revised in `PROJECT DOCS/DECISIONS.md` to decouple Part A (Focused UI Decomposition — Proposed for Approval) from Part B (Core Package Migration — Deferred) and Part C (Standalone Risk Model — Deferred). All 27 unit and integration tests pass cleanly.
 
 ## Last Completed Task
-**M3-T5 — UI Component Decomposition & UX Specifications Review (Audit & Bug Fixes):**
-- Fixed missing `import plotly.graph_objects as go` in `app.py` preventing scenario comparison chart crash.
-- Enabled zero-budget planning slider (`min_value=0.0`) in `app.py` matching optimizer zero-budget support.
-- Included `source_note` in selected portfolio table and CSV export.
-- Implemented 5 new regression tests in `tests/test_ui_regression.py`.
-- Verified headless Streamlit startup on port 8502 without error.
-- All 27/27 pytest tests passing.
+**M4 Architecture Review & Implementation Specification:**
+- Audited M3-T5 PR and baseline status (27/27 tests passing).
+- Revised ADR-009 in `PROJECT DOCS/DECISIONS.md` separating scoped UI decomposition from deferred core/risk model migrations.
+- Authored the detailed UI component architecture, file-level implementation plan, test plan, and regression criteria (M4-AC01 to M4-AC10).
+- Filed formal specification report in `AI HANDOFFS/Antigravity/Reports/2026-11-06_antigravity_m4_architecture_specification_report.md`.
 
 ## Result
-**Pass** (27/27 unit, integration, and UI regression tests passing).
+**Pass** (Architecture review and implementation specification complete; zero unauthorized code refactoring).
 
 ## Next Responsible Agent
-**ChatGPT** (Project Architect & Technical Supervisor)
+**Human Project Lead** (with **ChatGPT** as Technical Supervisor)
 
 ## Next Task
-1. Review the M3-T5 implementation, regression tests, and handoff report on branch `feature/m3-t5-ui-review`.
-2. Formulate technical specification for Milestone 4 (Milestone 4: Architecture Modularization & Feature Freeze, specifically ADR-009 review and Streamlit component modularization).
-3. Recommend approval of PR for merge into `dev`/`main`.
+1. Review the revised ADR-009 and the M4 Component Architecture Specification.
+2. Provide explicit approval for Part A (UI Component Decomposition: `components/portfolio.py`, `components/analytics.py`, `components/provenance.py`, `components/exports.py`).
+3. Authorize Antigravity to begin implementation of the modularization plan.
 
 ## Required Inputs
-- [`app.py`](file:///c:/Users/saksh/OneDrive/Documents/Desktop/pccoe%20indradhanu/app.py)
-- [`tests/test_ui_regression.py`](file:///c:/Users/saksh/OneDrive/Documents/Desktop/pccoe%20indradhanu/tests/test_ui_regression.py)
-- [`PROJECT DOCS/TASKS.md`](file:///c:/Users/saksh/OneDrive/Documents/Desktop/pccoe%20indradhanu/PROJECT%20DOCS/TASKS.md)
-- [`AI HANDOFFS/Antigravity/Reports/2026-11-05_antigravity_m3_t5_ui_review_report.md`](file:///c:/Users/saksh/OneDrive/Documents/Desktop/pccoe%20indradhanu/AI%20HANDOFFS/Antigravity/Reports/2026-11-05_antigravity_m3_t5_ui_review_report.md)
+- [`PROJECT DOCS/DECISIONS.md`](file:///c:/Users/saksh/OneDrive/Documents/Desktop/pccoe%20indradhanu/PROJECT%20DOCS/DECISIONS.md) (Revised ADR-009)
+- [`PROJECT DOCS/TASKS.md`](file:///c:/Users/saksh/OneDrive/Documents/Desktop/pccoe%20indradhanu/PROJECT%20DOCS/TASKS.md) (Tasks M4-T1 through M4-T4)
+- [`AI HANDOFFS/Antigravity/Reports/2026-11-06_antigravity_m4_architecture_specification_report.md`](file:///c:/Users/saksh/OneDrive/Documents/Desktop/pccoe%20indradhanu/AI%20HANDOFFS/Antigravity/Reports/2026-11-06_antigravity_m4_architecture_specification_report.md)
 
 ## Expected Deliverables
-1. Architectural review of the M3-T5 changes and PR.
-2. Technical specification for Task M4-T1 (ADR-009 Review) and Task M4-T3 (Component Modularization).
+Explicit approval from Human Project Lead to proceed with extraction of `components/` modules and refactoring of `app.py`.
 
 ## Acceptance Criteria
-- Strictly maintains frozen MVP constraints (6 Pune zones, 12 packages, 4 presets, ₹ Cr budget, additive scoring).
-- Zero test regressions across the 27 test cases.
-- Transparent data provenance and zero ungrounded impact claims.
+- Strictly maintains frozen MVP constraints (6 Pune zones, 12 interventions, 4 presets, ₹ Cr budget, additive scoring).
+- Zero regression across the 27 passing tests (M4-AC01 through M4-AC10).
+- Pure presentation extraction with zero alterations to `src/data_loader.py`, `src/optimizer.py`, `src/explanations.py`, or `src/map_view.py`.
 
 ## Blockers
-None. Application prototype is reliable, demo-ready, and passing all tests.
+**Human Approval Gate:** Implementation is paused until explicit Human Project Lead authorization is provided.
 
 ## Human Approval Required
-**Yes** — Human Project Lead approval required to merge branch `feature/m3-t5-ui-review` into `dev`/`main`.
+**Yes** — Implementation, file migration, optimizer changes, and ADR-009 approval require explicit authorization before code changes can commence.

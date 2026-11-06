@@ -185,58 +185,85 @@ Accepted and Implemented.
 
 ---
 
-## ADR-009: Proposal for Application Modularization and Submodule Architecture
+## ADR-009: Scoped UI Component Decomposition and Preservation of Core Architecture
 
 ### Context
-The application originated as an end-to-end prototype with modules situated directly at the root of `src/` (`src/data_loader.py`, `src/optimizer.py`, `src/explanations.py`, `src/map_view.py`) and a single script entry point (`app.py`).
+The Streamlit application (`app.py`) was originally authored as a single script managing multiple responsibilities: user input controls, metric rendering, Plotly chart generation, data table presentation, CSV exports, and narrative formatting.
 
-During workspace organization, a scalable target directory hierarchy was established:
-- `src/data_processing/`: Ingestion, schema validation, and normalization.
-- `src/risk_model/`: Standalone calculations for multi-hazard, exposure, and vulnerability indices.
-- `src/optimizer/`: Combinatorial and integer linear programming portfolio solvers.
-- `src/utils/`: Shared narrative generators, formatting, and spatial visualizers.
-- `components/`: Modular, reusable Streamlit UI widgets (`metric_cards.py`, `scenario_table.py`, `charts.py`, `provenance_banner.py`).
+An earlier draft of ADR-009 proposed simultaneous full-stack reorganization: migrating data loaders and optimizers into nested subpackages, introducing a new standalone risk model calculation engine, and rewriting UI components. 
 
-To prevent breaking existing test imports during initial workspace organization, temporary mirror files and re-export `__init__.py` bridges were introduced:
-- `src/data_loader.py` and `src/data_processing/loader.py`
-- `src/optimizer.py` and `src/optimizer/portfolio_optimizer.py`
-- `src/explanations.py` & `src/map_view.py` and `src/utils/`
+Following technical supervisor review by ChatGPT, this broad approach was identified as introducing unnecessary regression risks, potential import breakages, and unapproved scope expansion during the frozen MVP phase. To maintain strict architectural stability and test integrity, ADR-009 is now revised to decouple three independent architectural concerns:
 
-This duality creates temporary file duplication and technical debt that must be resolved systematically.
+1. **Focused UI Decomposition (Part A — Proposed for Approval)**
+2. **Core Package Migration (Part B — Deferred)**
+3. **Standalone Risk Model (Part C — Deferred)**
 
-### Proposed Future Structure
+---
 
-1. **Source Package Migration:**
-   - Migrate `src/data_loader.py` exclusively to `src/data_processing/loader.py`.
-   - Introduce standalone composite risk calculations in `src/risk_model/engine.py` (incorporating Gemini's mathematical audit).
-   - Retain optimizer logic in `src/optimizer/portfolio_optimizer.py` with clean public API exposed via `src/optimizer/__init__.py`.
-   - House narrative explanations and spatial map renderers in `src/utils/`.
-2. **UI Component Decomposition:**
-   - Deconstruct monolithic rendering blocks in `app.py` into dedicated modules in `components/`:
-     - `components/metric_cards.py`: Portfolio summary KPI cards.
-     - `components/scenario_table.py`: 4-preset comparative matrix rendering.
-     - `components/charts.py`: Plotly multi-criteria radar and budget breakdown charts.
-     - `components/provenance_banner.py`: Standardized 3-tier data provenance badges and disclaimers.
-   - Refactor `app.py` to act strictly as a thin orchestrator.
-3. **Data Path Canonicalization:**
-   - Update data loader default path to point to `data/reference/`.
+### Decision
+
+#### Part A: Focused Streamlit UI Component Decomposition (PROPOSED FOR APPROVAL)
+Extract presentation logic from `app.py` into four focused, decoupled component modules under `components/`, maintaining `app.py` strictly as the application orchestrator:
+
+- **`components/portfolio.py`**:
+  - Functions: `render_kpi_metrics(result, zones_count)`, `render_selected_portfolio_table(selected_df)`.
+  - Responsibilities: Renders executive KPI summary cards (`st.metric`) and formatted table of selected adaptation projects.
+- **`components/analytics.py`**:
+  - Functions: `render_score_breakdown(breakdown)`, `render_budget_donut(cost, remaining)`, `render_scenario_comparison(scenario_df)`.
+  - Responsibilities: Score decomposition bar chart, budget utilization donut chart, scenario comparison table, and grouped bar chart comparing Total Score vs. Capital Cost.
+- **`components/provenance.py`**:
+  - Functions: `render_provenance_banner()`, `render_dataset_tabs(zones_df, projects_df)`.
+  - Responsibilities: Illustrative data disclaimer banner and raw fixture explorer tabs (6 planning zones, 12 project packages).
+- **`components/exports.py`**:
+  - Functions: `render_portfolio_export_button(table_df, objective_id, budget_crore)`, `render_scenario_export_button(scenario_df, budget_crore)`.
+  - Responsibilities: CSV generation, byte encoding, RFC-4180 formatting, and download triggers, ensuring preservation of `data_status` and `source_note`.
+
+**Application Orchestrator (`app.py`):**
+- Retains page configuration (`st.set_page_config`), data loading, planning parameter inputs (budget slider, preset selectbox), invocation of `solve_portfolio()`, invocation of `src/map_view.py:render_spatial_view()`, and layout orchestration across the components.
+
+**Preservation of Spatial View (`src/map_view.py`):**
+- Retain existing geospatial map rendering and its verified tabular fallback in `src/map_view.py`. Do not move or rewrite.
+
+#### Part B: Core Package Migration (DEFERRED)
+- Do **not** migrate, move, or rename core engine files:
+  - `src/data_loader.py` remains in place.
+  - `src/optimizer.py` remains in place.
+  - `src/explanations.py` remains in place.
+  - `src/map_view.py` remains in place.
+- All existing import interfaces (`from src.data_loader import ...`, `from src.optimizer import ...`) remain completely stable.
+- Existing tests require zero import path modifications.
+
+#### Part C: Standalone Risk Model Submodule (DEFERRED)
+- Do **not** implement a new composite risk calculation submodule (`src/risk_model/`) or change risk index formulations during Milestone 4.
+- Gemini's proposed multiplicative hazard-vulnerability coupling is explicitly excluded from the frozen MVP.
+- The approved additive multi-criteria scoring model is strictly preserved.
+- Any future risk modeling requires a separate mathematical proposal, data contract revision, verification strategy, and explicit Human Project Lead approval.
+
+---
+
+### Non-Negotiable Guardrails
+- **Frozen MVP Scope:** Six illustrative Pune zones, twelve packages (2 mutually exclusive alternatives per zone), four objective presets, and ₹ Crore budget.
+- **Scoring & Optimizer Invariance:** Zero changes to `compute_project_score()`, `solve_portfolio()`, objective weights, constraints, or deterministic tie-breaking.
+- **Provenance Preservation:** Selected portfolio and scenario exports must preserve `data_status`, `source_note`, and all audit fields.
+- **Zero Live External APIs:** No live geocoders, external map tile tokens, or live sensor APIs.
+
+---
 
 ### Benefits and Risks
 
 - **Benefits:**
-  - **High Cohesion & Separation of Concerns:** UI rendering separated from core mathematical optimization and data processing.
-  - **Reusability & Testability:** UI components and risk algorithms can be tested independently with isolated mocks.
-  - **Clean Team Division:** ChatGPT can work on `components/`, Gemini on `src/risk_model/` and `src/optimizer/`, Antigravity on test hardening.
-- **Risks:**
-  - **Import Breakages:** Tests currently import from `src.data_loader`, `src.optimizer`, `src.explanations`. Removing root modules abruptly without compatibility shims would cause test collection failures.
-  - **Regression Risk:** Moving rendering logic from `app.py` into `components/` could introduce Streamlit session state or reactivity regressions.
+  - **High Maintainability & Cohesion:** `app.py` reduces from 260 lines of mixed rendering and state logic to ~80 lines of clean orchestration.
+  - **Isolated Testability:** UI component formatting, export byte-encoding, and metric calculation can be tested independently.
+  - **Zero Core Disruption:** Deferring core engine and risk model migrations avoids breaking tests or creating compatibility regressions.
+- **Risks & Mitigations:**
+  - *Risk:* Streamlit rerun or session state lifecycle discrepancies across imported modules.
+    - *Mitigation:* Pass explicit dataframes/dicts as pure function arguments; avoid hidden global state.
+  - *Risk:* Omission of required export columns (e.g., `source_note`).
+    - *Mitigation:* Dedicated UI regression tests in `tests/test_ui_regression.py` enforce column presence.
 
-### Potential Impact on Existing Imports and Tests
-- All test files (`tests/test_data_loader.py`, `tests/test_optimizer.py`, `tests/test_explanations.py`, `tests/test_integration.py`) must either:
-  1. Be updated to import from the new modular subpackages (`src.data_processing`, `src.optimizer`, `src.utils`), OR
-  2. Be supported via clean backwards-compatibility aliases in `src/__init__.py`.
-- Refactoring must only take place in a dedicated milestone with 100% test pass verification after each atomic step.
+---
 
 ### Status
-**PROPOSED — NOT APPROVED.** Implementation is deferred until formal approval by the team.
+**PROPOSED — NOT APPROVED.**  
+*Planning and specification are authorized. Implementation will commence only after explicit approval by the Human Project Lead.*
 
