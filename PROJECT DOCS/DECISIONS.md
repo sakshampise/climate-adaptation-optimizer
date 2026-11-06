@@ -219,10 +219,10 @@ Extract presentation logic from `app.py` into four focused, decoupled component 
   - Responsibilities: CSV generation, byte encoding, RFC-4180 formatting, and download triggers, ensuring preservation of `data_status` and `source_note`.
 
 **Application Orchestrator (`app.py`):**
-- Retains page configuration (`st.set_page_config`), data loading, planning parameter inputs (budget slider, preset selectbox), invocation of `solve_portfolio()`, invocation of `src/map_view.py:render_spatial_view()`, and layout orchestration across the components.
+- Functions as a thin orchestrator coordinating page configuration (`st.set_page_config`), baseline data loading, planning parameter inputs (budget slider, preset selectbox), solver invocation (`solve_portfolio()`), spatial view rendering (`src/map_view.py:render_spatial_view()`), and component rendering without arbitrary line-count constraints.
 
 **Preservation of Spatial View (`src/map_view.py`):**
-- Retain existing geospatial map rendering and its verified tabular fallback in `src/map_view.py`. Do not move or rewrite.
+- Retain existing geospatial map rendering and its verified tabular fallback in `src/map_view.py`. Do not move, rewrite, or alter its public function signatures.
 
 #### Part B: Core Package Migration (DEFERRED)
 - Do **not** migrate, move, or rename core engine files:
@@ -231,7 +231,7 @@ Extract presentation logic from `app.py` into four focused, decoupled component 
   - `src/explanations.py` remains in place.
   - `src/map_view.py` remains in place.
 - All existing import interfaces (`from src.data_loader import ...`, `from src.optimizer import ...`) remain completely stable.
-- Existing tests require zero import path modifications.
+- Existing unit, integration, and UI regression tests require zero import path modifications.
 
 #### Part C: Standalone Risk Model Submodule (DEFERRED)
 - Do **not** implement a new composite risk calculation submodule (`src/risk_model/`) or change risk index formulations during Milestone 4.
@@ -244,6 +244,8 @@ Extract presentation logic from `app.py` into four focused, decoupled component 
 ### Non-Negotiable Guardrails
 - **Frozen MVP Scope:** Six illustrative Pune zones, twelve packages (2 mutually exclusive alternatives per zone), four objective presets, and ₹ Crore budget.
 - **Scoring & Optimizer Invariance:** Zero changes to `compute_project_score()`, `solve_portfolio()`, objective weights, constraints, or deterministic tie-breaking.
+- **Strict Boundary Isolation:** Optimizer, scoring algorithms, data loading schemas, and risk calculations are strictly outside the scope of M4-T3.
+- **Civic Metric Grounding & Labeling:** Charts, metrics, tooltips, and narrative explanations must explicitly designate model scores as illustrative multi-criteria resilience/benefit points. They must NEVER describe or label model scores as empirical or validated hazard reductions, physical temperature drops, flood depth reductions, or casualties prevented.
 - **Provenance Preservation:** Selected portfolio and scenario exports must preserve `data_status`, `source_note`, and all audit fields.
 - **Zero Live External APIs:** No live geocoders, external map tile tokens, or live sensor APIs.
 
@@ -252,7 +254,7 @@ Extract presentation logic from `app.py` into four focused, decoupled component 
 ### Benefits and Risks
 
 - **Benefits:**
-  - **High Maintainability & Cohesion:** `app.py` reduces from 260 lines of mixed rendering and state logic to ~80 lines of clean orchestration.
+  - **High Maintainability & Cohesion:** `app.py` functions as a clean orchestrator focusing purely on state flow and coordination without arbitrary line-count constraints.
   - **Isolated Testability:** UI component formatting, export byte-encoding, and metric calculation can be tested independently.
   - **Zero Core Disruption:** Deferring core engine and risk model migrations avoids breaking tests or creating compatibility regressions.
 - **Risks & Mitigations:**
@@ -260,10 +262,13 @@ Extract presentation logic from `app.py` into four focused, decoupled component 
     - *Mitigation:* Pass explicit dataframes/dicts as pure function arguments; avoid hidden global state.
   - *Risk:* Omission of required export columns (e.g., `source_note`).
     - *Mitigation:* Dedicated UI regression tests in `tests/test_ui_regression.py` enforce column presence.
+  - *Risk:* Visual misinterpretation of illustrative points as physical hazard reductions.
+    - *Mitigation:* Strict axis labeling ('Relative Benefit Points') and prominent prototype disclaimers.
 
 ---
 
 ### Status
-**PROPOSED — NOT APPROVED.**  
-*Planning and specification are authorized. Implementation will commence only after explicit approval by the Human Project Lead.*
+**PROPOSED — PENDING HUMAN PROJECT LEAD APPROVAL**  
+*Target Status upon Explicit Approval by Human Project Lead: `APPROVED — SCOPED UI DECOMPOSITION ONLY`.*  
+*Planning and specification are authorized. M4-T3 implementation remains unauthorized until explicit approval is recorded by the Human Project Lead.*
 
