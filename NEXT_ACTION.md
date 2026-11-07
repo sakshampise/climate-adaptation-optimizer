@@ -26,7 +26,7 @@ All 27 baseline unit, integration, and UI regression tests continue to pass. **Z
 ## Next Task
 1. Review the corrected M4 Component Architecture Specification and revised ADR-009.
 2. In an interactive terminal, run `git push -u origin feature/m3-t5-ui-review` to authenticate via Git Credential Manager and publish local commits to GitHub.
-3. Open/inspect Pull Request: `https://github.com/sakshampise/climate-adaptation-optimizer/compare/dev...feature/m3-t5-ui-review?expand=1`.
+3. Open/inspect Pull Request against default branch `main`: `https://github.com/sakshampise/climate-adaptation-optimizer/compare/main...feature/m3-t5-ui-review?expand=1` (or against `dev` if using two-tier branching).
 4. Provide explicit approval for ADR-009 (`APPROVED — SCOPED UI DECOMPOSITION ONLY`).
 5. Grant explicit authorization to Antigravity to begin M4-T3 implementation.
 
