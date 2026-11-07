@@ -77,10 +77,10 @@ Audit the existing Streamlit application against the frozen MVP requirements, ve
    - *Fix:* Added `import plotly.graph_objects as go` at line 10 of `app.py`.
    - *Regression Test:* Added `test_app_imports_and_plotly_go_defined()` and `test_scenario_comparison_chart_construction()`.
 2. **Defect 2: Artificially Restricted Zero-Budget Minimum (`min_value=1.0`)**
-   - *Severity:* Medium (Prevents municipal planners from testing zero or sub-₹1 Cr allocation policies).
-   - *Verification:* Slider prohibited budgets $< 1.0$ Cr even though `solve_portfolio` explicitly supports `0.0`.
+   - *Severity:* Medium (Prevents municipal planners from selecting zero or sub-₹1 Cr allocation policies in the UI).
+   - *Verification & Root Cause:* The underlying optimizer in `src/optimizer.py` already supported zero budget (`tests/test_optimizer.py:test_zero_budget_returns_empty_portfolio` passed). There was no crash or exception in `solve_portfolio`. Rather, `app.py` line 65 artificially clamped the Streamlit slider to `min_value=1.0`, entirely blocking users from selecting ₹0.0 Cr in the dashboard.
    - *Fix:* Lowered slider `min_value` from `1.0` to `0.0` with `step=0.5`.
-   - *Regression Test:* Added `test_zero_budget_pipeline_behavior()`.
+   - *Regression Test Scope:* Added `test_zero_budget_pipeline_behavior()` in `tests/test_ui_regression.py`. Note: This test validates the mathematical solver and narrative explanation pipeline under zero budget across all 4 presets; it does not test the interactive Streamlit slider widget itself (which was verified via manual and headless smoke testing).
 3. **Defect 3: Missing `source_note` in Selected Portfolio Table and CSV Export**
    - *Severity:* Low (Data policy non-conformance; exports lacked methodology references).
    - *Verification:* `table_df` column selection omitted `"source_note"`.
@@ -91,8 +91,11 @@ Audit the existing Streamlit application against the frozen MVP requirements, ve
 
 ## 7. Tests Actually Executed & Actual Results
 
+### Explicit Disclosure on Test Structure
+> **Disclosure:** In `tests/test_ui_regression.py`, `test_export_preserves_source_note_and_provenance()` and `test_scenario_comparison_chart_construction()` currently replicate the DataFrame filtering, column mapping, CSV encoding, and Plotly figure generation logic from `app.py` within test helper code. This was necessary because presentation logic in `app.py` currently exists as monolithic script flow rather than standalone callable functions. Under Milestone 4 (Task M4-T3), these tests will be refactored to directly call the extracted presentation functions (`components/exports.py` and `components/analytics.py`), eliminating test-side logic replication.
+
 ### Terminal Execution Summary
-All tests executed via `pytest` in the local Python 3.13 / Anaconda environment:
+All tests executed via `pytest` in the local Python 3.13 / Anaconda environment (100% pass rate; deterministic combinatorial search over 729 combinations):
 
 ```text
 ============================= test session starts =============================
