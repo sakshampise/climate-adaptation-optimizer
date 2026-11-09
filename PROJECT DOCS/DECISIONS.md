@@ -268,7 +268,6 @@ Extract presentation logic from `app.py` into four focused, decoupled component 
 ---
 
 ### Status
-**PROPOSED — PENDING HUMAN PROJECT LEAD APPROVAL**  
-*Target Status upon Explicit Approval by Human Project Lead: `APPROVED — SCOPED UI DECOMPOSITION ONLY`.*  
-*Planning and specification are authorized. M4-T3 implementation remains unauthorized until explicit approval is recorded by the Human Project Lead.*
+**APPROVED & IMPLEMENTED — SCOPED UI DECOMPOSITION ONLY.**  
+*Part A approved by Human Project Lead and implemented on branch `feature/m4-t3-ui-modularization`. UI presentation extracted into `components/portfolio.py`, `components/analytics.py`, `components/provenance.py`, `components/exports.py` with `app.py` serving as thin application orchestrator. Verified across 24 scenarios via `tests/test_ui_equivalence.py` (84/84 passing tests). Core modules (`src/`) and risk formulations strictly frozen.*
 

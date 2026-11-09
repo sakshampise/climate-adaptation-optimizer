@@ -1,0 +1,1033 @@
+{
+  "_metadata": {
+    "baseline_commit": "68b3e74",
+    "generation_date": "2026-11-09",
+    "description": "Pre-refactor golden baseline oracle across 24 scenarios (4 presets x 6 budgets)",
+    "total_scenarios": 24
+  },
+  "flood_0.0cr": {
+    "preset_id": "flood",
+    "budget_crore": 0.0,
+    "selected_project_ids": [],
+    "total_cost_crore": 0.0,
+    "budget_remaining_crore": 0.0,
+    "total_score": 0.0,
+    "score_breakdown": {
+      "flood": 0.0,
+      "heat": 0.0,
+      "equity": 0.0,
+      "infrastructure": 0.0,
+      "urgency": 0.0
+    },
+    "summary_narrative": "Under the Flood Priority preset, the optimizer evaluated 729 candidate combinations (1 budget-feasible portfolios) and identified an optimal allocation of \u20b90.00 Cr across 0 planning zones, generating 0.00 total planning resilience points with \u20b90.00 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P01": "budget_exceeded",
+      "P02": "budget_exceeded",
+      "P03": "budget_exceeded",
+      "P04": "budget_exceeded",
+      "P05": "budget_exceeded",
+      "P06": "budget_exceeded",
+      "P07": "budget_exceeded",
+      "P08": "budget_exceeded",
+      "P09": "budget_exceeded",
+      "P10": "budget_exceeded",
+      "P11": "budget_exceeded",
+      "P12": "budget_exceeded"
+    },
+    "unselected_texts": {
+      "P01": "Budget Insufficient: Package cost of \u20b93.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P02": "Budget Insufficient: Package cost of \u20b94.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P03": "Budget Insufficient: Package cost of \u20b92.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P04": "Budget Insufficient: Package cost of \u20b91.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P05": "Budget Insufficient: Package cost of \u20b92.10 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P06": "Budget Insufficient: Package cost of \u20b93.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P07": "Budget Insufficient: Package cost of \u20b92.90 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P08": "Budget Insufficient: Package cost of \u20b92.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P09": "Budget Insufficient: Package cost of \u20b91.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P10": "Budget Insufficient: Package cost of \u20b92.30 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P11": "Budget Insufficient: Package cost of \u20b93.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P12": "Budget Insufficient: Package cost of \u20b94.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr."
+    },
+    "portfolio_csv": "",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nheat,Heat Priority,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nbalanced,Balanced Resilience,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nequity,Social & Climate Equity,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\n"
+  },
+  "heat_0.0cr": {
+    "preset_id": "heat",
+    "budget_crore": 0.0,
+    "selected_project_ids": [],
+    "total_cost_crore": 0.0,
+    "budget_remaining_crore": 0.0,
+    "total_score": 0.0,
+    "score_breakdown": {
+      "flood": 0.0,
+      "heat": 0.0,
+      "equity": 0.0,
+      "infrastructure": 0.0,
+      "urgency": 0.0
+    },
+    "summary_narrative": "Under the Heat Priority preset, the optimizer evaluated 729 candidate combinations (1 budget-feasible portfolios) and identified an optimal allocation of \u20b90.00 Cr across 0 planning zones, generating 0.00 total planning resilience points with \u20b90.00 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P01": "budget_exceeded",
+      "P02": "budget_exceeded",
+      "P03": "budget_exceeded",
+      "P04": "budget_exceeded",
+      "P05": "budget_exceeded",
+      "P06": "budget_exceeded",
+      "P07": "budget_exceeded",
+      "P08": "budget_exceeded",
+      "P09": "budget_exceeded",
+      "P10": "budget_exceeded",
+      "P11": "budget_exceeded",
+      "P12": "budget_exceeded"
+    },
+    "unselected_texts": {
+      "P01": "Budget Insufficient: Package cost of \u20b93.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P02": "Budget Insufficient: Package cost of \u20b94.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P03": "Budget Insufficient: Package cost of \u20b92.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P04": "Budget Insufficient: Package cost of \u20b91.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P05": "Budget Insufficient: Package cost of \u20b92.10 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P06": "Budget Insufficient: Package cost of \u20b93.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P07": "Budget Insufficient: Package cost of \u20b92.90 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P08": "Budget Insufficient: Package cost of \u20b92.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P09": "Budget Insufficient: Package cost of \u20b91.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P10": "Budget Insufficient: Package cost of \u20b92.30 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P11": "Budget Insufficient: Package cost of \u20b93.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P12": "Budget Insufficient: Package cost of \u20b94.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr."
+    },
+    "portfolio_csv": "",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nheat,Heat Priority,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nbalanced,Balanced Resilience,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nequity,Social & Climate Equity,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\n"
+  },
+  "balanced_0.0cr": {
+    "preset_id": "balanced",
+    "budget_crore": 0.0,
+    "selected_project_ids": [],
+    "total_cost_crore": 0.0,
+    "budget_remaining_crore": 0.0,
+    "total_score": 0.0,
+    "score_breakdown": {
+      "flood": 0.0,
+      "heat": 0.0,
+      "equity": 0.0,
+      "infrastructure": 0.0,
+      "urgency": 0.0
+    },
+    "summary_narrative": "Under the Balanced Resilience preset, the optimizer evaluated 729 candidate combinations (1 budget-feasible portfolios) and identified an optimal allocation of \u20b90.00 Cr across 0 planning zones, generating 0.00 total planning resilience points with \u20b90.00 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P01": "budget_exceeded",
+      "P02": "budget_exceeded",
+      "P03": "budget_exceeded",
+      "P04": "budget_exceeded",
+      "P05": "budget_exceeded",
+      "P06": "budget_exceeded",
+      "P07": "budget_exceeded",
+      "P08": "budget_exceeded",
+      "P09": "budget_exceeded",
+      "P10": "budget_exceeded",
+      "P11": "budget_exceeded",
+      "P12": "budget_exceeded"
+    },
+    "unselected_texts": {
+      "P01": "Budget Insufficient: Package cost of \u20b93.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P02": "Budget Insufficient: Package cost of \u20b94.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P03": "Budget Insufficient: Package cost of \u20b92.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P04": "Budget Insufficient: Package cost of \u20b91.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P05": "Budget Insufficient: Package cost of \u20b92.10 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P06": "Budget Insufficient: Package cost of \u20b93.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P07": "Budget Insufficient: Package cost of \u20b92.90 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P08": "Budget Insufficient: Package cost of \u20b92.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P09": "Budget Insufficient: Package cost of \u20b91.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P10": "Budget Insufficient: Package cost of \u20b92.30 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P11": "Budget Insufficient: Package cost of \u20b93.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P12": "Budget Insufficient: Package cost of \u20b94.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr."
+    },
+    "portfolio_csv": "",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nheat,Heat Priority,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nbalanced,Balanced Resilience,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nequity,Social & Climate Equity,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\n"
+  },
+  "equity_0.0cr": {
+    "preset_id": "equity",
+    "budget_crore": 0.0,
+    "selected_project_ids": [],
+    "total_cost_crore": 0.0,
+    "budget_remaining_crore": 0.0,
+    "total_score": 0.0,
+    "score_breakdown": {
+      "flood": 0.0,
+      "heat": 0.0,
+      "equity": 0.0,
+      "infrastructure": 0.0,
+      "urgency": 0.0
+    },
+    "summary_narrative": "Under the Social & Climate Equity preset, the optimizer evaluated 729 candidate combinations (1 budget-feasible portfolios) and identified an optimal allocation of \u20b90.00 Cr across 0 planning zones, generating 0.00 total planning resilience points with \u20b90.00 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P01": "budget_exceeded",
+      "P02": "budget_exceeded",
+      "P03": "budget_exceeded",
+      "P04": "budget_exceeded",
+      "P05": "budget_exceeded",
+      "P06": "budget_exceeded",
+      "P07": "budget_exceeded",
+      "P08": "budget_exceeded",
+      "P09": "budget_exceeded",
+      "P10": "budget_exceeded",
+      "P11": "budget_exceeded",
+      "P12": "budget_exceeded"
+    },
+    "unselected_texts": {
+      "P01": "Budget Insufficient: Package cost of \u20b93.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P02": "Budget Insufficient: Package cost of \u20b94.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P03": "Budget Insufficient: Package cost of \u20b92.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P04": "Budget Insufficient: Package cost of \u20b91.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P05": "Budget Insufficient: Package cost of \u20b92.10 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P06": "Budget Insufficient: Package cost of \u20b93.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P07": "Budget Insufficient: Package cost of \u20b92.90 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P08": "Budget Insufficient: Package cost of \u20b92.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P09": "Budget Insufficient: Package cost of \u20b91.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P10": "Budget Insufficient: Package cost of \u20b92.30 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P11": "Budget Insufficient: Package cost of \u20b93.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P12": "Budget Insufficient: Package cost of \u20b94.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr."
+    },
+    "portfolio_csv": "",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nheat,Heat Priority,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nbalanced,Balanced Resilience,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\nequity,Social & Climate Equity,0.0,0.0,0.0,0,,0.0,0.0,0.0,0.0\r\n"
+  },
+  "flood_1.4cr": {
+    "preset_id": "flood",
+    "budget_crore": 1.4,
+    "selected_project_ids": [
+      "P09"
+    ],
+    "total_cost_crore": 1.4,
+    "budget_remaining_crore": 0.0,
+    "total_score": 47.75,
+    "score_breakdown": {
+      "flood": 15.0,
+      "heat": 9.0,
+      "equity": 14.25,
+      "infrastructure": 5.0,
+      "urgency": 4.5
+    },
+    "summary_narrative": "Under the Flood Priority preset, the optimizer evaluated 729 candidate combinations (2 budget-feasible portfolios) and identified an optimal allocation of \u20b91.40 Cr across 1 planning zones, generating 47.75 total planning resilience points with \u20b90.00 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P01": "budget_exceeded",
+      "P02": "budget_exceeded",
+      "P03": "budget_exceeded",
+      "P04": "budget_exceeded",
+      "P05": "budget_exceeded",
+      "P06": "budget_exceeded",
+      "P07": "budget_exceeded",
+      "P08": "budget_exceeded",
+      "P10": "same_zone_alternative_chosen",
+      "P11": "budget_exceeded",
+      "P12": "budget_exceeded"
+    },
+    "unselected_texts": {
+      "P01": "Budget Insufficient: Package cost of \u20b93.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P02": "Budget Insufficient: Package cost of \u20b94.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P03": "Budget Insufficient: Package cost of \u20b92.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P04": "Budget Insufficient: Package cost of \u20b91.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P05": "Budget Insufficient: Package cost of \u20b92.10 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P06": "Budget Insufficient: Package cost of \u20b93.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P07": "Budget Insufficient: Package cost of \u20b92.90 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P08": "Budget Insufficient: Package cost of \u20b92.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P11": "Budget Insufficient: Package cost of \u20b93.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P12": "Budget Insufficient: Package cost of \u20b94.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,47.75,1.4,0.0,1,P09,15.0,9.0,14.25,5.0\r\nheat,Heat Priority,80.25,1.4,0.0,1,P09,2.5,54.0,14.25,5.0\r\nbalanced,Balanced Resilience,64.0,1.4,0.0,1,P09,8.75,31.5,14.25,5.0\r\nequity,Social & Climate Equity,76.75,1.4,0.0,1,P09,3.75,13.5,47.5,7.5\r\n"
+  },
+  "heat_1.4cr": {
+    "preset_id": "heat",
+    "budget_crore": 1.4,
+    "selected_project_ids": [
+      "P09"
+    ],
+    "total_cost_crore": 1.4,
+    "budget_remaining_crore": 0.0,
+    "total_score": 80.25,
+    "score_breakdown": {
+      "flood": 2.5,
+      "heat": 54.0,
+      "equity": 14.25,
+      "infrastructure": 5.0,
+      "urgency": 4.5
+    },
+    "summary_narrative": "Under the Heat Priority preset, the optimizer evaluated 729 candidate combinations (2 budget-feasible portfolios) and identified an optimal allocation of \u20b91.40 Cr across 1 planning zones, generating 80.25 total planning resilience points with \u20b90.00 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P01": "budget_exceeded",
+      "P02": "budget_exceeded",
+      "P03": "budget_exceeded",
+      "P04": "budget_exceeded",
+      "P05": "budget_exceeded",
+      "P06": "budget_exceeded",
+      "P07": "budget_exceeded",
+      "P08": "budget_exceeded",
+      "P10": "same_zone_alternative_chosen",
+      "P11": "budget_exceeded",
+      "P12": "budget_exceeded"
+    },
+    "unselected_texts": {
+      "P01": "Budget Insufficient: Package cost of \u20b93.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P02": "Budget Insufficient: Package cost of \u20b94.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P03": "Budget Insufficient: Package cost of \u20b92.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P04": "Budget Insufficient: Package cost of \u20b91.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P05": "Budget Insufficient: Package cost of \u20b92.10 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P06": "Budget Insufficient: Package cost of \u20b93.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P07": "Budget Insufficient: Package cost of \u20b92.90 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P08": "Budget Insufficient: Package cost of \u20b92.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P11": "Budget Insufficient: Package cost of \u20b93.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P12": "Budget Insufficient: Package cost of \u20b94.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,47.75,1.4,0.0,1,P09,15.0,9.0,14.25,5.0\r\nheat,Heat Priority,80.25,1.4,0.0,1,P09,2.5,54.0,14.25,5.0\r\nbalanced,Balanced Resilience,64.0,1.4,0.0,1,P09,8.75,31.5,14.25,5.0\r\nequity,Social & Climate Equity,76.75,1.4,0.0,1,P09,3.75,13.5,47.5,7.5\r\n"
+  },
+  "balanced_1.4cr": {
+    "preset_id": "balanced",
+    "budget_crore": 1.4,
+    "selected_project_ids": [
+      "P09"
+    ],
+    "total_cost_crore": 1.4,
+    "budget_remaining_crore": 0.0,
+    "total_score": 64.0,
+    "score_breakdown": {
+      "flood": 8.75,
+      "heat": 31.5,
+      "equity": 14.25,
+      "infrastructure": 5.0,
+      "urgency": 4.5
+    },
+    "summary_narrative": "Under the Balanced Resilience preset, the optimizer evaluated 729 candidate combinations (2 budget-feasible portfolios) and identified an optimal allocation of \u20b91.40 Cr across 1 planning zones, generating 64.00 total planning resilience points with \u20b90.00 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P01": "budget_exceeded",
+      "P02": "budget_exceeded",
+      "P03": "budget_exceeded",
+      "P04": "budget_exceeded",
+      "P05": "budget_exceeded",
+      "P06": "budget_exceeded",
+      "P07": "budget_exceeded",
+      "P08": "budget_exceeded",
+      "P10": "same_zone_alternative_chosen",
+      "P11": "budget_exceeded",
+      "P12": "budget_exceeded"
+    },
+    "unselected_texts": {
+      "P01": "Budget Insufficient: Package cost of \u20b93.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P02": "Budget Insufficient: Package cost of \u20b94.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P03": "Budget Insufficient: Package cost of \u20b92.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P04": "Budget Insufficient: Package cost of \u20b91.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P05": "Budget Insufficient: Package cost of \u20b92.10 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P06": "Budget Insufficient: Package cost of \u20b93.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P07": "Budget Insufficient: Package cost of \u20b92.90 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P08": "Budget Insufficient: Package cost of \u20b92.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P11": "Budget Insufficient: Package cost of \u20b93.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P12": "Budget Insufficient: Package cost of \u20b94.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,47.75,1.4,0.0,1,P09,15.0,9.0,14.25,5.0\r\nheat,Heat Priority,80.25,1.4,0.0,1,P09,2.5,54.0,14.25,5.0\r\nbalanced,Balanced Resilience,64.0,1.4,0.0,1,P09,8.75,31.5,14.25,5.0\r\nequity,Social & Climate Equity,76.75,1.4,0.0,1,P09,3.75,13.5,47.5,7.5\r\n"
+  },
+  "equity_1.4cr": {
+    "preset_id": "equity",
+    "budget_crore": 1.4,
+    "selected_project_ids": [
+      "P09"
+    ],
+    "total_cost_crore": 1.4,
+    "budget_remaining_crore": 0.0,
+    "total_score": 76.75,
+    "score_breakdown": {
+      "flood": 3.75,
+      "heat": 13.5,
+      "equity": 47.5,
+      "infrastructure": 7.5,
+      "urgency": 4.5
+    },
+    "summary_narrative": "Under the Social & Climate Equity preset, the optimizer evaluated 729 candidate combinations (2 budget-feasible portfolios) and identified an optimal allocation of \u20b91.40 Cr across 1 planning zones, generating 76.75 total planning resilience points with \u20b90.00 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P01": "budget_exceeded",
+      "P02": "budget_exceeded",
+      "P03": "budget_exceeded",
+      "P04": "budget_exceeded",
+      "P05": "budget_exceeded",
+      "P06": "budget_exceeded",
+      "P07": "budget_exceeded",
+      "P08": "budget_exceeded",
+      "P10": "same_zone_alternative_chosen",
+      "P11": "budget_exceeded",
+      "P12": "budget_exceeded"
+    },
+    "unselected_texts": {
+      "P01": "Budget Insufficient: Package cost of \u20b93.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P02": "Budget Insufficient: Package cost of \u20b94.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P03": "Budget Insufficient: Package cost of \u20b92.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P04": "Budget Insufficient: Package cost of \u20b91.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P05": "Budget Insufficient: Package cost of \u20b92.10 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P06": "Budget Insufficient: Package cost of \u20b93.40 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P07": "Budget Insufficient: Package cost of \u20b92.90 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P08": "Budget Insufficient: Package cost of \u20b92.20 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P11": "Budget Insufficient: Package cost of \u20b93.80 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr.",
+      "P12": "Budget Insufficient: Package cost of \u20b94.50 Cr exceeds the remaining unallocated budget of \u20b90.00 Cr."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,47.75,1.4,0.0,1,P09,15.0,9.0,14.25,5.0\r\nheat,Heat Priority,80.25,1.4,0.0,1,P09,2.5,54.0,14.25,5.0\r\nbalanced,Balanced Resilience,64.0,1.4,0.0,1,P09,8.75,31.5,14.25,5.0\r\nequity,Social & Climate Equity,76.75,1.4,0.0,1,P09,3.75,13.5,47.5,7.5\r\n"
+  },
+  "flood_15.0cr": {
+    "preset_id": "flood",
+    "budget_crore": 15.0,
+    "selected_project_ids": [
+      "P01",
+      "P03",
+      "P06",
+      "P07",
+      "P10"
+    ],
+    "total_cost_crore": 14.3,
+    "budget_remaining_crore": 0.7,
+    "total_score": 384.9,
+    "score_breakdown": {
+      "flood": 252.0,
+      "heat": 24.0,
+      "equity": 51.9,
+      "infrastructure": 36.5,
+      "urgency": 20.5
+    },
+    "summary_narrative": "Under the Flood Priority preset, the optimizer evaluated 729 candidate combinations (593 budget-feasible portfolios) and identified an optimal allocation of \u20b914.30 Cr across 5 planning zones, generating 384.90 total planning resilience points with \u20b90.70 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P04": "same_zone_alternative_chosen",
+      "P05": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P11": "budget_exceeded",
+      "P12": "budget_exceeded"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P04": "Zone Alternative Chosen: Permeable Pavement & Street Storm Infiltration was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P05": "Zone Alternative Chosen: Canal Desilting & Natural Retention Pond was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P11": "Budget Insufficient: Package cost of \u20b93.80 Cr exceeds the remaining unallocated budget of \u20b90.70 Cr.",
+      "P12": "Budget Insufficient: Package cost of \u20b94.50 Cr exceeds the remaining unallocated budget of \u20b90.70 Cr."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP03,Z02,Permeable Pavement & Street Storm Infiltration,hybrid,2.5,72,58,55,85,75,medium,simulated,Retrofits urban core pedestrian corridors to reduce street-level ponding and waterlogging.\r\nP06,Z03,Canal Desilting & Natural Retention Pond,hybrid,3.4,84,45,72,70,78,medium,simulated,Enhances stormwater holding capacity and de-clogs industrial discharge drainage channels.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,384.9,14.3,0.7,5,\"P01, P03, P06, P07, P10\",252.0,24.0,51.9,36.5\r\nheat,Heat Priority,443.3,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,411.05,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",120.05,165.2,61.8,41.0\r\nequity,Social & Climate Equity,412.75,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",51.45,70.8,206.0,61.5\r\n"
+  },
+  "heat_15.0cr": {
+    "preset_id": "heat",
+    "budget_crore": 15.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P05",
+      "P08",
+      "P09",
+      "P11"
+    ],
+    "total_cost_crore": 14.5,
+    "budget_remaining_crore": 0.5,
+    "total_score": 443.3,
+    "score_breakdown": {
+      "flood": 34.3,
+      "heat": 283.2,
+      "equity": 61.8,
+      "infrastructure": 41.0,
+      "urgency": 23.0
+    },
+    "summary_narrative": "Under the Heat Priority preset, the optimizer evaluated 729 candidate combinations (593 budget-feasible portfolios) and identified an optimal allocation of \u20b914.50 Cr across 6 planning zones, generating 443.30 total planning resilience points with \u20b90.50 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P06": "same_zone_alternative_chosen",
+      "P07": "same_zone_alternative_chosen",
+      "P10": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P06": "Zone Alternative Chosen: Industrial Green Buffer & Worker Shade Canopies was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P07": "Zone Alternative Chosen: Hill Slope Afforestation & Contour Trenches was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.\r\nP08,Z04,Hill Slope Afforestation & Contour Trenches,nature_based,2.2,78,65,58,62,68,medium,simulated,Stops rapid hillside stormwater runoff and soil erosion along Katraj ghat ridges.\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,384.9,14.3,0.7,5,\"P01, P03, P06, P07, P10\",252.0,24.0,51.9,36.5\r\nheat,Heat Priority,443.3,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,411.05,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",120.05,165.2,61.8,41.0\r\nequity,Social & Climate Equity,412.75,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",51.45,70.8,206.0,61.5\r\n"
+  },
+  "balanced_15.0cr": {
+    "preset_id": "balanced",
+    "budget_crore": 15.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P05",
+      "P08",
+      "P09",
+      "P11"
+    ],
+    "total_cost_crore": 14.5,
+    "budget_remaining_crore": 0.5,
+    "total_score": 411.05,
+    "score_breakdown": {
+      "flood": 120.05,
+      "heat": 165.2,
+      "equity": 61.8,
+      "infrastructure": 41.0,
+      "urgency": 23.0
+    },
+    "summary_narrative": "Under the Balanced Resilience preset, the optimizer evaluated 729 candidate combinations (593 budget-feasible portfolios) and identified an optimal allocation of \u20b914.50 Cr across 6 planning zones, generating 411.05 total planning resilience points with \u20b90.50 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P06": "same_zone_alternative_chosen",
+      "P07": "same_zone_alternative_chosen",
+      "P10": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P06": "Zone Alternative Chosen: Industrial Green Buffer & Worker Shade Canopies was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P07": "Zone Alternative Chosen: Hill Slope Afforestation & Contour Trenches was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.\r\nP08,Z04,Hill Slope Afforestation & Contour Trenches,nature_based,2.2,78,65,58,62,68,medium,simulated,Stops rapid hillside stormwater runoff and soil erosion along Katraj ghat ridges.\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,384.9,14.3,0.7,5,\"P01, P03, P06, P07, P10\",252.0,24.0,51.9,36.5\r\nheat,Heat Priority,443.3,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,411.05,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",120.05,165.2,61.8,41.0\r\nequity,Social & Climate Equity,412.75,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",51.45,70.8,206.0,61.5\r\n"
+  },
+  "equity_15.0cr": {
+    "preset_id": "equity",
+    "budget_crore": 15.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P05",
+      "P08",
+      "P09",
+      "P11"
+    ],
+    "total_cost_crore": 14.5,
+    "budget_remaining_crore": 0.5,
+    "total_score": 412.75,
+    "score_breakdown": {
+      "flood": 51.45,
+      "heat": 70.8,
+      "equity": 206.0,
+      "infrastructure": 61.5,
+      "urgency": 23.0
+    },
+    "summary_narrative": "Under the Social & Climate Equity preset, the optimizer evaluated 729 candidate combinations (593 budget-feasible portfolios) and identified an optimal allocation of \u20b914.50 Cr across 6 planning zones, generating 412.75 total planning resilience points with \u20b90.50 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P06": "same_zone_alternative_chosen",
+      "P07": "same_zone_alternative_chosen",
+      "P10": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P06": "Zone Alternative Chosen: Industrial Green Buffer & Worker Shade Canopies was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P07": "Zone Alternative Chosen: Hill Slope Afforestation & Contour Trenches was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.\r\nP08,Z04,Hill Slope Afforestation & Contour Trenches,nature_based,2.2,78,65,58,62,68,medium,simulated,Stops rapid hillside stormwater runoff and soil erosion along Katraj ghat ridges.\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,384.9,14.3,0.7,5,\"P01, P03, P06, P07, P10\",252.0,24.0,51.9,36.5\r\nheat,Heat Priority,443.3,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,411.05,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",120.05,165.2,61.8,41.0\r\nequity,Social & Climate Equity,412.75,14.5,0.5,6,\"P01, P04, P05, P08, P09, P11\",51.45,70.8,206.0,61.5\r\n"
+  },
+  "flood_30.0cr": {
+    "preset_id": "flood",
+    "budget_crore": 30.0,
+    "selected_project_ids": [
+      "P01",
+      "P03",
+      "P06",
+      "P07",
+      "P10",
+      "P11"
+    ],
+    "total_cost_crore": 18.1,
+    "budget_remaining_crore": 11.9,
+    "total_score": 457.1,
+    "score_breakdown": {
+      "flood": 297.0,
+      "heat": 32.2,
+      "equity": 58.65,
+      "infrastructure": 45.5,
+      "urgency": 23.75
+    },
+    "summary_narrative": "Under the Flood Priority preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b918.10 Cr across 6 planning zones, generating 457.10 total planning resilience points with \u20b911.90 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P04": "same_zone_alternative_chosen",
+      "P05": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P04": "Zone Alternative Chosen: Permeable Pavement & Street Storm Infiltration was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P05": "Zone Alternative Chosen: Canal Desilting & Natural Retention Pond was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP03,Z02,Permeable Pavement & Street Storm Infiltration,hybrid,2.5,72,58,55,85,75,medium,simulated,Retrofits urban core pedestrian corridors to reduce street-level ponding and waterlogging.\r\nP06,Z03,Canal Desilting & Natural Retention Pond,hybrid,3.4,84,45,72,70,78,medium,simulated,Enhances stormwater holding capacity and de-clogs industrial discharge drainage channels.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,11.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,15.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,12.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,13.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "heat_30.0cr": {
+    "preset_id": "heat",
+    "budget_crore": 30.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P05",
+      "P08",
+      "P09",
+      "P11"
+    ],
+    "total_cost_crore": 14.5,
+    "budget_remaining_crore": 15.5,
+    "total_score": 443.3,
+    "score_breakdown": {
+      "flood": 34.3,
+      "heat": 283.2,
+      "equity": 61.8,
+      "infrastructure": 41.0,
+      "urgency": 23.0
+    },
+    "summary_narrative": "Under the Heat Priority preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b914.50 Cr across 6 planning zones, generating 443.30 total planning resilience points with \u20b915.50 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P06": "same_zone_alternative_chosen",
+      "P07": "same_zone_alternative_chosen",
+      "P10": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P06": "Zone Alternative Chosen: Industrial Green Buffer & Worker Shade Canopies was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P07": "Zone Alternative Chosen: Hill Slope Afforestation & Contour Trenches was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.\r\nP08,Z04,Hill Slope Afforestation & Contour Trenches,nature_based,2.2,78,65,58,62,68,medium,simulated,Stops rapid hillside stormwater runoff and soil erosion along Katraj ghat ridges.\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,11.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,15.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,12.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,13.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "balanced_30.0cr": {
+    "preset_id": "balanced",
+    "budget_crore": 30.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P06",
+      "P07",
+      "P10",
+      "P11"
+    ],
+    "total_cost_crore": 17.4,
+    "budget_remaining_crore": 12.6,
+    "total_score": 415.55,
+    "score_breakdown": {
+      "flood": 162.05,
+      "heat": 124.6,
+      "equity": 60.6,
+      "infrastructure": 44.8,
+      "urgency": 23.5
+    },
+    "summary_narrative": "Under the Balanced Resilience preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b917.40 Cr across 6 planning zones, generating 415.55 total planning resilience points with \u20b912.60 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P05": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P05": "Zone Alternative Chosen: Canal Desilting & Natural Retention Pond was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP06,Z03,Canal Desilting & Natural Retention Pond,hybrid,3.4,84,45,72,70,78,medium,simulated,Enhances stormwater holding capacity and de-clogs industrial discharge drainage channels.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,11.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,15.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,12.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,13.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "equity_30.0cr": {
+    "preset_id": "equity",
+    "budget_crore": 30.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P05",
+      "P07",
+      "P10",
+      "P11"
+    ],
+    "total_cost_crore": 16.1,
+    "budget_remaining_crore": 13.9,
+    "total_score": 420.35,
+    "score_breakdown": {
+      "flood": 62.1,
+      "heat": 59.85,
+      "equity": 209.0,
+      "infrastructure": 65.7,
+      "urgency": 23.7
+    },
+    "summary_narrative": "Under the Social & Climate Equity preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b916.10 Cr across 6 planning zones, generating 420.35 total planning resilience points with \u20b913.90 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P06": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P06": "Zone Alternative Chosen: Industrial Green Buffer & Worker Shade Canopies was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,11.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,15.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,12.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,13.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "flood_50.0cr": {
+    "preset_id": "flood",
+    "budget_crore": 50.0,
+    "selected_project_ids": [
+      "P01",
+      "P03",
+      "P06",
+      "P07",
+      "P10",
+      "P11"
+    ],
+    "total_cost_crore": 18.1,
+    "budget_remaining_crore": 31.9,
+    "total_score": 457.1,
+    "score_breakdown": {
+      "flood": 297.0,
+      "heat": 32.2,
+      "equity": 58.65,
+      "infrastructure": 45.5,
+      "urgency": 23.75
+    },
+    "summary_narrative": "Under the Flood Priority preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b918.10 Cr across 6 planning zones, generating 457.10 total planning resilience points with \u20b931.90 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P04": "same_zone_alternative_chosen",
+      "P05": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P04": "Zone Alternative Chosen: Permeable Pavement & Street Storm Infiltration was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P05": "Zone Alternative Chosen: Canal Desilting & Natural Retention Pond was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP03,Z02,Permeable Pavement & Street Storm Infiltration,hybrid,2.5,72,58,55,85,75,medium,simulated,Retrofits urban core pedestrian corridors to reduce street-level ponding and waterlogging.\r\nP06,Z03,Canal Desilting & Natural Retention Pond,hybrid,3.4,84,45,72,70,78,medium,simulated,Enhances stormwater holding capacity and de-clogs industrial discharge drainage channels.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,31.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,35.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,32.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,33.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "heat_50.0cr": {
+    "preset_id": "heat",
+    "budget_crore": 50.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P05",
+      "P08",
+      "P09",
+      "P11"
+    ],
+    "total_cost_crore": 14.5,
+    "budget_remaining_crore": 35.5,
+    "total_score": 443.3,
+    "score_breakdown": {
+      "flood": 34.3,
+      "heat": 283.2,
+      "equity": 61.8,
+      "infrastructure": 41.0,
+      "urgency": 23.0
+    },
+    "summary_narrative": "Under the Heat Priority preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b914.50 Cr across 6 planning zones, generating 443.30 total planning resilience points with \u20b935.50 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P06": "same_zone_alternative_chosen",
+      "P07": "same_zone_alternative_chosen",
+      "P10": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P06": "Zone Alternative Chosen: Industrial Green Buffer & Worker Shade Canopies was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P07": "Zone Alternative Chosen: Hill Slope Afforestation & Contour Trenches was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.\r\nP08,Z04,Hill Slope Afforestation & Contour Trenches,nature_based,2.2,78,65,58,62,68,medium,simulated,Stops rapid hillside stormwater runoff and soil erosion along Katraj ghat ridges.\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,31.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,35.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,32.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,33.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "balanced_50.0cr": {
+    "preset_id": "balanced",
+    "budget_crore": 50.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P06",
+      "P07",
+      "P10",
+      "P11"
+    ],
+    "total_cost_crore": 17.4,
+    "budget_remaining_crore": 32.6,
+    "total_score": 415.55,
+    "score_breakdown": {
+      "flood": 162.05,
+      "heat": 124.6,
+      "equity": 60.6,
+      "infrastructure": 44.8,
+      "urgency": 23.5
+    },
+    "summary_narrative": "Under the Balanced Resilience preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b917.40 Cr across 6 planning zones, generating 415.55 total planning resilience points with \u20b932.60 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P05": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P05": "Zone Alternative Chosen: Canal Desilting & Natural Retention Pond was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP06,Z03,Canal Desilting & Natural Retention Pond,hybrid,3.4,84,45,72,70,78,medium,simulated,Enhances stormwater holding capacity and de-clogs industrial discharge drainage channels.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,31.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,35.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,32.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,33.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "equity_50.0cr": {
+    "preset_id": "equity",
+    "budget_crore": 50.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P05",
+      "P07",
+      "P10",
+      "P11"
+    ],
+    "total_cost_crore": 16.1,
+    "budget_remaining_crore": 33.9,
+    "total_score": 420.35,
+    "score_breakdown": {
+      "flood": 62.1,
+      "heat": 59.85,
+      "equity": 209.0,
+      "infrastructure": 65.7,
+      "urgency": 23.7
+    },
+    "summary_narrative": "Under the Social & Climate Equity preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b916.10 Cr across 6 planning zones, generating 420.35 total planning resilience points with \u20b933.90 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P06": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P06": "Zone Alternative Chosen: Industrial Green Buffer & Worker Shade Canopies was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,31.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,35.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,32.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,33.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "flood_100.0cr": {
+    "preset_id": "flood",
+    "budget_crore": 100.0,
+    "selected_project_ids": [
+      "P01",
+      "P03",
+      "P06",
+      "P07",
+      "P10",
+      "P11"
+    ],
+    "total_cost_crore": 18.1,
+    "budget_remaining_crore": 81.9,
+    "total_score": 457.1,
+    "score_breakdown": {
+      "flood": 297.0,
+      "heat": 32.2,
+      "equity": 58.65,
+      "infrastructure": 45.5,
+      "urgency": 23.75
+    },
+    "summary_narrative": "Under the Flood Priority preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b918.10 Cr across 6 planning zones, generating 457.10 total planning resilience points with \u20b981.90 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P04": "same_zone_alternative_chosen",
+      "P05": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P04": "Zone Alternative Chosen: Permeable Pavement & Street Storm Infiltration was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P05": "Zone Alternative Chosen: Canal Desilting & Natural Retention Pond was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP03,Z02,Permeable Pavement & Street Storm Infiltration,hybrid,2.5,72,58,55,85,75,medium,simulated,Retrofits urban core pedestrian corridors to reduce street-level ponding and waterlogging.\r\nP06,Z03,Canal Desilting & Natural Retention Pond,hybrid,3.4,84,45,72,70,78,medium,simulated,Enhances stormwater holding capacity and de-clogs industrial discharge drainage channels.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,81.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,85.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,82.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,83.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "heat_100.0cr": {
+    "preset_id": "heat",
+    "budget_crore": 100.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P05",
+      "P08",
+      "P09",
+      "P11"
+    ],
+    "total_cost_crore": 14.5,
+    "budget_remaining_crore": 85.5,
+    "total_score": 443.3,
+    "score_breakdown": {
+      "flood": 34.3,
+      "heat": 283.2,
+      "equity": 61.8,
+      "infrastructure": 41.0,
+      "urgency": 23.0
+    },
+    "summary_narrative": "Under the Heat Priority preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b914.50 Cr across 6 planning zones, generating 443.30 total planning resilience points with \u20b985.50 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P06": "same_zone_alternative_chosen",
+      "P07": "same_zone_alternative_chosen",
+      "P10": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P06": "Zone Alternative Chosen: Industrial Green Buffer & Worker Shade Canopies was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P07": "Zone Alternative Chosen: Hill Slope Afforestation & Contour Trenches was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P10": "Zone Alternative Chosen: Slum Cool Roof Retrofit & Thermal Refuges was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.\r\nP08,Z04,Hill Slope Afforestation & Contour Trenches,nature_based,2.2,78,65,58,62,68,medium,simulated,Stops rapid hillside stormwater runoff and soil erosion along Katraj ghat ridges.\r\nP09,Z05,Slum Cool Roof Retrofit & Thermal Refuges,passive_cooling,1.4,25,90,95,50,90,medium,simulated,High-reflective coatings on tin roofs in Yerawada informal settlements reducing indoor heat stress.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,81.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,85.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,82.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,83.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "balanced_100.0cr": {
+    "preset_id": "balanced",
+    "budget_crore": 100.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P06",
+      "P07",
+      "P10",
+      "P11"
+    ],
+    "total_cost_crore": 17.4,
+    "budget_remaining_crore": 82.6,
+    "total_score": 415.55,
+    "score_breakdown": {
+      "flood": 162.05,
+      "heat": 124.6,
+      "equity": 60.6,
+      "infrastructure": 44.8,
+      "urgency": 23.5
+    },
+    "summary_narrative": "Under the Balanced Resilience preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b917.40 Cr across 6 planning zones, generating 415.55 total planning resilience points with \u20b982.60 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P05": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P05": "Zone Alternative Chosen: Canal Desilting & Natural Retention Pond was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP06,Z03,Canal Desilting & Natural Retention Pond,hybrid,3.4,84,45,72,70,78,medium,simulated,Enhances stormwater holding capacity and de-clogs industrial discharge drainage channels.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,81.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,85.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,82.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,83.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  },
+  "equity_100.0cr": {
+    "preset_id": "equity",
+    "budget_crore": 100.0,
+    "selected_project_ids": [
+      "P01",
+      "P04",
+      "P05",
+      "P07",
+      "P10",
+      "P11"
+    ],
+    "total_cost_crore": 16.1,
+    "budget_remaining_crore": 83.9,
+    "total_score": 420.35,
+    "score_breakdown": {
+      "flood": 62.1,
+      "heat": 59.85,
+      "equity": 209.0,
+      "infrastructure": 65.7,
+      "urgency": 23.7
+    },
+    "summary_narrative": "Under the Social & Climate Equity preset, the optimizer evaluated 729 candidate combinations (729 budget-feasible portfolios) and identified an optimal allocation of \u20b916.10 Cr across 6 planning zones, generating 420.35 total planning resilience points with \u20b983.90 Cr unallocated budget remaining.",
+    "unselected_reasons": {
+      "P02": "same_zone_alternative_chosen",
+      "P03": "same_zone_alternative_chosen",
+      "P06": "same_zone_alternative_chosen",
+      "P08": "same_zone_alternative_chosen",
+      "P09": "same_zone_alternative_chosen",
+      "P12": "same_zone_alternative_chosen"
+    },
+    "unselected_texts": {
+      "P02": "Zone Alternative Chosen: Riparian Wetland & Sponge Buffer was selected for Sangamwadi Confluence (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P03": "Zone Alternative Chosen: Miyawaki Forest Pockets & Cool Roof District was selected for Shivajinagar Urban Core (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P06": "Zone Alternative Chosen: Industrial Green Buffer & Worker Shade Canopies was selected for Hadapsar Corridor (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P08": "Zone Alternative Chosen: Katraj Lake Bio-Swale & De-silting Cascade was selected for Katraj Lake Catchment (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P09": "Zone Alternative Chosen: Elevated Concrete Walkways & Micro-Drainage was selected for Yerawada Riverfront Settlements (Demo) instead, satisfying the single-intervention constraint per planning area.",
+      "P12": "Zone Alternative Chosen: IT Park Bioswales & Rainwater Retention Park was selected for Hinjawadi Tech Corridor (Demo) instead, satisfying the single-intervention constraint per planning area."
+    },
+    "portfolio_csv": "Project ID,Zone ID,Project Package,Type,Cost (\u20b9 Cr),Flood Pts,Heat Pts,Equity Pts,Infra Pts,Urgency,Evidence,Status,Source Note\r\nP01,Z01,Riparian Wetland & Sponge Buffer,nature_based,3.2,90,55,60,70,85,medium,simulated,Restores floodplains and marsh buffers along Mula-Mutha confluence to absorb flood crests.\r\nP04,Z02,Miyawaki Forest Pockets & Cool Roof District,nature_based,1.8,40,92,68,78,70,medium,simulated,Micro-greening and high-albedo roof coating targeting central commercial heat island hot spots.\r\nP05,Z03,Industrial Green Buffer & Worker Shade Canopies,nature_based,2.1,35,88,86,60,82,medium,simulated,Canopy planting and insulated shade transit shelters for industrial workers in Hadapsar.\r\nP07,Z04,Katraj Lake Bio-Swale & De-silting Cascade,nature_based,2.9,88,52,65,75,80,high,simulated,Restores lake holding capacity to prevent downstream flash-flooding in southern Pune.\r\nP10,Z05,Elevated Concrete Walkways & Micro-Drainage,grey_infrastructure,2.3,86,30,94,65,92,high,simulated,Eliminates persistent foul waterlogging and secures evacuation routes for vulnerable slum residents.\r\nP11,Z06,IT Park Bioswales & Rainwater Retention Park,nature_based,3.8,75,82,45,90,65,high,simulated,Decentralized stormwater filtration basins and roadside green infrastructure for Hinjawadi.\r\n",
+    "scenario_csv": "Preset ID,Policy Preset,Total Score (pts),Allocated Cost (\u20b9 Cr),Remaining Budget (\u20b9 Cr),Funded Areas Count,Selected Project IDs,Flood Points,Heat Points,Equity Points,Infra Points\r\nflood,Flood Priority,457.1,18.1,81.9,6,\"P01, P03, P06, P07, P10, P11\",297.0,32.2,58.65,45.5\r\nheat,Heat Priority,443.3,14.5,85.5,6,\"P01, P04, P05, P08, P09, P11\",34.3,283.2,61.8,41.0\r\nbalanced,Balanced Resilience,415.55,17.4,82.6,6,\"P01, P04, P06, P07, P10, P11\",162.05,124.6,60.6,44.8\r\nequity,Social & Climate Equity,420.35,16.1,83.9,6,\"P01, P04, P05, P07, P10, P11\",62.1,59.85,209.0,65.7\r\n"
+  }
+}
