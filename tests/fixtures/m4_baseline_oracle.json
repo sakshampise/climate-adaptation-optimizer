@@ -1,4 +1,10 @@
 {
+  "_metadata": {
+    "baseline_commit": "68b3e74",
+    "generation_date": "2026-11-09",
+    "description": "Pre-refactor golden baseline oracle across 24 scenarios (4 presets x 6 budgets)",
+    "total_scenarios": 24
+  },
   "flood_0.0cr": {
     "preset_id": "flood",
     "budget_crore": 0.0,
