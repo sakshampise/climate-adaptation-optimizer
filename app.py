@@ -13,7 +13,12 @@ from src.data_loader import load_inputs, DataValidationError
 from src.optimizer import solve_portfolio, OBJECTIVE_WEIGHTS, PRESET_DISPLAY_NAMES
 from src.explanations import generate_portfolio_explanation
 from src.map_view import render_spatial_view
-from components.provenance import render_provenance_banner, render_dataset_tabs
+from src.ingestion import fetch_live_climate
+from components.provenance import (
+    render_provenance_banner,
+    render_live_climate_card,
+    render_dataset_tabs,
+)
 from components.portfolio import render_kpi_metrics, render_selected_portfolio
 from components.analytics import (
     render_score_breakdown,
@@ -46,7 +51,11 @@ def main():
     # 2. Provenance Notice Banner
     render_provenance_banner()
 
-    # 3. Ingest and Validate Canonical Data
+    # 3. Live Environmental Climate Context (Open-Meteo Integration)
+    climate_obs = fetch_live_climate()
+    render_live_climate_card(climate_obs)
+
+    # 4. Ingest and Validate Canonical Data
     try:
         zones_df, projects_df = load_dataset()
     except DataValidationError as err:

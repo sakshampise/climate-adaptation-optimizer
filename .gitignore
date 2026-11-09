@@ -18,6 +18,7 @@ ENV/
 .pytest_cache/
 .coverage
 htmlcov/
+data/cache/
 
 # OS and Editor files
 .DS_Store

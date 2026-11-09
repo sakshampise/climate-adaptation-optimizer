@@ -153,6 +153,7 @@ def test_component_modules_import_and_expose_contract():
 
     # provenance component
     assert hasattr(cprov, "render_provenance_banner")
+    assert hasattr(cprov, "render_live_climate_card")
     assert hasattr(cprov, "render_dataset_tabs")
 
     # exports component

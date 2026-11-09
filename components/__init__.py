@@ -3,7 +3,7 @@
 Decomposed presentation modules conforming to ADR-009 Part A:
 - portfolio: Executive KPI cards and selected portfolio table rendering.
 - analytics: Score breakdown bar, budget donut, and multi-scenario comparison.
-- provenance: Prototype policy banner and fixture explorer tabs.
+- provenance: Prototype policy banner, live climate context card, and fixture explorer tabs.
 - exports: RFC-4180 CSV export payload generation and download buttons.
 """
 
@@ -19,7 +19,11 @@ from .analytics import (
     render_scenario_comparison,
     build_scenario_comparison_df,
 )
-from .provenance import render_provenance_banner, render_dataset_tabs
+from .provenance import (
+    render_provenance_banner,
+    render_live_climate_card,
+    render_dataset_tabs,
+)
 from .exports import (
     render_portfolio_export_button,
     render_scenario_export_button,
@@ -37,6 +41,7 @@ __all__ = [
     "render_scenario_comparison",
     "build_scenario_comparison_df",
     "render_provenance_banner",
+    "render_live_climate_card",
     "render_dataset_tabs",
     "render_portfolio_export_button",
     "render_scenario_export_button",
