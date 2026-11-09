@@ -29,8 +29,13 @@
 | **M4-T2** | Standalone risk model calculation submodule (`src/risk_model/`) | ChatGPT / Antigravity | P1 | 2026-11-07 | **Deferred (Out of Scope for M4)** | M3-T4, M4-T1 |
 | **M4-T3** | Decomposition of monolithic `app.py` into modular Streamlit `components/` | ChatGPT / Antigravity | P1 | 2026-11-08 | **Completed (Modularized into components/, 84/84 Tests Passing)** | M3-T5, M4-T1 |
 | **M4-T4** | End-to-end regression testing and integration test hardening | Antigravity | P0 | 2026-11-08 | **Completed (24-Scenario Equivalence Verified, 84/84 Passing)** | M4-T2, M4-T3 |
-| **M5-T1** | Clean environment deployment verification and packaging audit | Antigravity | P0 | 2026-11-09 | **Active / Handover Ready** | M4-T4 |
-| **M5-T2** | Presentation slide deck, demonstration script, and civic impact briefing | Human Lead / All | P0 | 2026-11-10 | **Pending** | M5-T1 |
+| **M5-T1** | Repository audit and climate API feasibility assessment report | Antigravity | P0 | 2026-11-09 | **Completed (Feasibility Report Filed)** | M4-T4 |
+| **M5-T2** | Open-Meteo integration (live forecast & historical archive) with caching | Antigravity | P0 | 2026-11-10 | **Pending Authorization** | M5-T1 |
+| **M5-T3** | NASA POWER integration and 30-year historical climate baseline | Antigravity | P1 | 2026-11-10 | **Planned** | M5-T2 |
+| **M5-T4** | IMD & ISRO Bhuvan GIS adapter modules with authentication guard | Antigravity | P1 | 2026-11-11 | **Planned** | M5-T2 |
+| **M5-T5** | Climate intelligence engine (heat index, rainfall accumulation, risk indicators) | Antigravity | P0 | 2026-11-11 | **Planned** | M5-T2, M5-T3 |
+| **M5-T6** | Dashboard integration: live status, freshness indicators, and provenance cards | Antigravity | P0 | 2026-11-12 | **Planned** | M5-T5 |
+| **M5-T7** | Integration tests, offline fallback tests, and documentation reconciliation | Antigravity | P0 | 2026-11-12 | **Planned** | M5-T6 |
 
 ---
 
@@ -58,7 +63,7 @@
 - **Status:** **100% Complete**
 - **Completed Deliverables:** ADR-009 Part A implemented. Presentation decomposed into `components/portfolio.py`, `components/analytics.py`, `components/provenance.py`, `components/exports.py`. `app.py` converted into thin application orchestrator. Created `tests/test_ui_equivalence.py` and `tests/fixtures/m4_baseline_oracle.json` verifying all 24 scenarios with 84/84 passing pytest tests. Core engine files remain strictly frozen.
 
-### Milestone 5: Submission & Presentation Readiness
-- **Target Deadline:** November 9–10, 2026
-- **Status:** **Active / Video Team Handover Ready**
-- **Focus:** Video recording, demonstration script execution, and final submission packaging.
+### Milestone 5: Live Climate Data API Integration
+- **Target Deadline:** November 9–12, 2026
+- **Status:** **Active (M5-T1 Completed)**
+- **Focus:** Transitioning illustrative data model to a genuinely connected, validated, and traceable multi-source climate data ingestion pipeline (Open-Meteo, NASA POWER, IMD, GIS) with preserved mathematical integrity.
