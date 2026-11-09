@@ -10,7 +10,7 @@
   - `eed499f`: M5-T1 Feasibility Assessment Report
   - `1b5757e`: M5-T2 Open-Meteo Integration & UI Boundary Card
   - `b89c696`: M5-T2 Formal Implementation Report
-- **Status:** **Audit Completed — Pending Approval Before Code Edits**
+- **Status:** **Audit Completed & Approved Fixes Implemented (100/100 Tests Passing)**
 
 ---
 
@@ -288,24 +288,46 @@ The pushed branch matches the local repository state.
 
 ---
 
-## 6. Proposed Fix Plan (Awaiting Approval)
+## 6. Implementation of Approved Scope Resolutions
 
-Upon Human Project Lead and ChatGPT approval, we will execute the following corrections:
+Following explicit Project Lead authorization, all approved reliability fixes have been implemented and verified:
 
-1. **Robust Parsing (`src/ingestion/fetch.py`):**
-   - Introduce `_safe_float()` and `_safe_int()` to guarantee immune response to `null` or missing values.
-   - Catch `(IntegrationError, requests.RequestException)` explicitly, logging unexpected errors with full traceback.
-2. **Scientific Threshold Precision (`src/ingestion/fetch.py` & `schemas.py`):**
-   - Separate official IMD standards (`heavy_rain_days_ge_64_5mm`, `imd_heatwave_days_ge_40c`) from municipal advisory levels (`heat_stress_days_ge_38c`).
-3. **Cache Concurrency Guard (`src/ingestion/cache.py`):**
-   - Use unique temporary file naming (`f"{path.stem}_{os.getpid()}_{time.time_ns()}.tmp"`) to eliminate Windows file locking collisions.
-4. **Truthful UI State Reporting (`components/provenance.py`):**
-   - Disclose disconnected status when displaying stale cached data during an API outage.
-   - Add spatial resolution disclaimer (~11 km grid for central Pune).
-   - Surface historical ERA5 monsoon baseline summary in a dedicated tab.
-5. **Comprehensive Edge-Case Tests (`tests/test_open_meteo.py`):**
-   - Add tests for null array values, malformed keys, corrupted cache files, and timeout boundaries.
+1. **Safe Numeric Parsing:**
+   - Introduced `_safe_float()` and `_safe_int()` in `src/ingestion/fetch.py`.
+   - Guaranteed immunity against `None`, non-numeric strings, and missing keys in API and daily arrays.
+2. **Timestamp Fidelity & Preservation:**
+   - Added `observation_time` to `LiveWeatherObservation` in `schemas.py`, capturing the model/station timestamp from `current["time"]`.
+   - Updated `ClimateCache.set()` and `get()` to preserve the original `retrieval_timestamp` from when the live request occurred.
+3. **Cache Concurrency Guard:**
+   - Updated `ClimateCache.set()` to use `tempfile.mkstemp` with unique file descriptors in `data/cache/climate/`, followed by atomic `os.replace()`, preventing Windows `WinError 32` file locking collisions.
+4. **Targeted Exception Handling:**
+   - In `src/ingestion/fetch.py`, replaced bare `except Exception:` with explicit `except (IntegrationError, requests.RequestException):` for network and HTTP failures.
+   - Added `logger.error("...", exc_info=True)` for unexpected programming errors so bugs are surfaced rather than silently swallowed.
+5. **Truthful UI State & Fallback Indicators:**
+   - In `components/provenance.py`, added distinct `🔴 API Disconnected — Stale Cached Data (Retrieved Xm ago)` badge during outages.
+   - Added `st.warning("⚠️ OFFLINE FALLBACK ACTIVE...")` and appended `(Simulated)` to metric titles during synthetic fallback.
+6. **Spatial Resolution Footnote:**
+   - Disclosed in `components/provenance.py` that data represents an ~11 km grid resolution cell covering central Pune ($18.52^\circ\text{N}, 73.86^\circ\text{E}$), and does not resolve peripheral micro-climatic differences.
+7. **Threshold Clarifications:**
+   - Separated official IMD standards from project indicators:
+     - `heat_stress_days_ge_38c`: Project-defined planning indicator based on PMC Heat Action Plan advisory levels (not official IMD heatwave).
+     - `imd_heavy_rain_days_ge_64_5mm`: Official IMD Heavy Rain criterion ($\ge 64.5\text{ mm}$).
+     - `moderate_to_heavy_rain_days_ge_35_5mm`: Project-defined rainfall indicator ($\ge 35.5\text{ mm}$).
+8. **Missing Historical Days Completeness:**
+   - Updated `fetch_historical_climate` to track `valid_days_count` and `data_completeness_pct`. Daily mean rainfall is calculated across valid observed days.
+9. **Rigorous Edge-Case Testing:**
+   - Expanded `tests/test_open_meteo.py` from 10 to 16 automated tests. Added tests for null array values, malformed types, missing dictionary keys, corrupted JSON cache files, HTTP 400 errors, atomic temp file writes, and incomplete historical records.
 
 ---
 
-*Stopping here as instructed. Awaiting project lead approval before implementing code changes.*
+## 7. Full Test Suite Verification
+
+```text
+============================= 100 passed in 5.20s =============================
+```
+- **54 Equivalence Tests:** 100% parity across all 24 policy/budget scenarios.
+- **8 UI Regression Tests:** 100% passing.
+- **22 Core Unit Tests:** 100% passing.
+- **16 Open-Meteo Integration & Edge-Case Tests:** 100% passing.
+- **Total:** **100/100 tests passing**. Core optimizer mathematical formulation and canonical CSV fixtures remain strictly untouched.
+

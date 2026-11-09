@@ -53,7 +53,8 @@ class DailyForecastItem:
 class LiveWeatherObservation:
     """Current weather observation and short-term forecast for Pune."""
     source: str                          # e.g., "open-meteo" | "cache" | "fallback"
-    retrieval_timestamp: str             # ISO8601 UTC string
+    retrieval_timestamp: str             # ISO8601 UTC string (when data was retrieved / cached)
+    observation_time: str                # Timestamp reported by meteorological provider
     latitude: float
     longitude: float
     elevation_m: float
@@ -72,8 +73,7 @@ class LiveWeatherObservation:
 
     def to_dict(self) -> Dict[str, Any]:
         """Convert observation to serializable dictionary."""
-        d = asdict(self)
-        return d
+        return asdict(self)
 
 
 @dataclass
@@ -85,17 +85,30 @@ class HistoricalClimateSummary:
     longitude: float
     period_start: str                    # YYYY-MM-DD
     period_end: str                      # YYYY-MM-DD
-    days_count: int
+    days_count: int                      # Total calendar days in target period
+    valid_days_count: int                # Days with valid, non-null observations
+    data_completeness_pct: float         # valid_days_count / days_count * 100
     total_rainfall_mm: float
     max_daily_rainfall_mm: float
     mean_daily_rainfall_mm: float
     mean_temp_max_c: float
     mean_temp_min_c: float
-    heatwave_days: int                   # Days with Tmax >= 38.0°C (Pune heat threshold)
-    heavy_rain_days: int                 # Days with Rain >= 35.5 mm (IMD rather heavy threshold)
+    heat_stress_days_ge_38c: int         # Project-defined planning indicator: Tmax >= 38.0°C (PMC alert level)
+    imd_heavy_rain_days_ge_64_5mm: int   # Official IMD Heavy Rain criterion: daily precipitation >= 64.5 mm
+    moderate_to_heavy_rain_days_ge_35_5mm: int  # Project-defined rainfall indicator: daily rain >= 35.5 mm
     data_status: str = "verified_historical"  # "verified_historical" | "cached" | "fallback_simulated"
     is_live: bool = False
     cache_hit: bool = False
+
+    @property
+    def heatwave_days(self) -> int:
+        """Backward-compatible alias for heat_stress_days_ge_38c."""
+        return self.heat_stress_days_ge_38c
+
+    @property
+    def heavy_rain_days(self) -> int:
+        """Backward-compatible alias for moderate_to_heavy_rain_days_ge_35_5mm."""
+        return self.moderate_to_heavy_rain_days_ge_35_5mm
 
     def to_dict(self) -> Dict[str, Any]:
         """Convert summary to serializable dictionary."""
