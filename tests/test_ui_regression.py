@@ -131,3 +131,72 @@ def test_budget_constraints_and_zone_exclusivity_across_budgets():
                 assert selected_df["zone_id"].is_unique
                 # Assert all selected projects are marked feasible
                 assert selected_df["feasible"].all()
+
+
+def test_component_modules_import_and_expose_contract():
+    """Verify that all four modular UI components import cleanly and expose ADR-009 contracts."""
+    import components.portfolio as cp
+    import components.analytics as ca
+    import components.provenance as cprov
+    import components.exports as ce
+
+    # portfolio component
+    assert hasattr(cp, "render_kpi_metrics")
+    assert hasattr(cp, "render_selected_portfolio")
+    assert hasattr(cp, "format_portfolio_table")
+
+    # analytics component
+    assert hasattr(ca, "render_score_breakdown")
+    assert hasattr(ca, "render_budget_donut")
+    assert hasattr(ca, "render_scenario_comparison")
+    assert hasattr(ca, "build_scenario_comparison_df")
+
+    # provenance component
+    assert hasattr(cprov, "render_provenance_banner")
+    assert hasattr(cprov, "render_dataset_tabs")
+
+    # exports component
+    assert hasattr(ce, "render_portfolio_export_button")
+    assert hasattr(ce, "render_scenario_export_button")
+    assert hasattr(ce, "generate_portfolio_csv")
+    assert hasattr(ce, "generate_scenario_csv")
+
+
+def test_component_portfolio_table_and_csv_generation():
+    """Verify format_portfolio_table and generate_portfolio_csv from components."""
+    from components.portfolio import format_portfolio_table
+    from components.exports import generate_portfolio_csv
+
+    _, projects_df = load_inputs("data")
+    res = solve_portfolio(projects_df, budget_crore=10.0, objective_id="balanced")
+    selected_df = res["selected_projects"]
+
+    table_df = format_portfolio_table(selected_df)
+    assert len(table_df.columns) == 13
+    assert "Source Note" in table_df.columns
+    assert "Status" in table_df.columns
+
+    csv_bytes = generate_portfolio_csv(table_df)
+    csv_text = csv_bytes.decode("utf-8")
+    assert "Source Note" in csv_text
+    assert "Status" in csv_text
+    assert "simulated" in csv_text
+
+
+def test_component_scenario_matrix_and_csv_generation():
+    """Verify build_scenario_comparison_df and generate_scenario_csv from components."""
+    from components.analytics import build_scenario_comparison_df
+    from components.exports import generate_scenario_csv
+
+    _, projects_df = load_inputs("data")
+    scenario_df = build_scenario_comparison_df(projects_df, budget_crore=10.0)
+    assert len(scenario_df) == 4
+    assert len(scenario_df.columns) == 11
+    assert "Policy Preset" in scenario_df.columns
+    assert "Total Score (pts)" in scenario_df.columns
+
+    csv_bytes = generate_scenario_csv(scenario_df)
+    csv_text = csv_bytes.decode("utf-8")
+    assert "Balanced Resilience" in csv_text
+    assert "Flood Priority" in csv_text
+
