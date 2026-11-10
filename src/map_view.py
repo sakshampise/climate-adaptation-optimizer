@@ -55,20 +55,31 @@ def render_spatial_view(
             },
             color="funded",
             color_discrete_map={
-                "Funded (Project Selected)": "#00CC96",
-                "Unfunded in Active Portfolio": "#FFA15A",
-                "Baseline (No Projects Selected)": "#636EFA",
+                "Funded (Project Selected)": "#426B52",       # Forest Green
+                "Unfunded in Active Portfolio": "#C17C57",    # Muted Terracotta
+                "Baseline (No Projects Selected)": "#3E6B89", # Slate Blue
             },
-            size=[25] * len(plot_df),
-            zoom=11,
+            size=[26] * len(plot_df),
+            zoom=11.2,
             center={"lat": 18.5204, "lon": 73.8567},  # Pune center coordinates
             mapbox_style="open-street-map",
-            height=450,
+            height=460,
         )
 
         fig.update_layout(
             margin={"r": 0, "t": 20, "l": 0, "b": 0},
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="right",
+                x=1,
+                font=dict(family="Inter, sans-serif", size=11),
+                bgcolor="rgba(246, 245, 239, 0.9)",
+                bordercolor="#DCD7CC",
+                borderwidth=1,
+            ),
+            paper_bgcolor="#F6F5EF",
         )
 
         st.plotly_chart(fig, use_container_width=True)

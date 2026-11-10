@@ -69,7 +69,7 @@ def render_kpi_metrics(result: Dict[str, Any], zones_count: int) -> None:
                 label="Capital Allocated",
                 value=f"₹{total_cost:.2f} Cr",
                 subtitle=f"₹{rem_budget:.2f} Cr remaining of budget",
-                color=COLORS["accent"],
+                color=COLORS["terracotta"],
             ),
             unsafe_allow_html=True,
         )
@@ -81,7 +81,7 @@ def render_kpi_metrics(result: Dict[str, Any], zones_count: int) -> None:
                 label="Resilience Score",
                 value=f"{total_score:.2f} pts",
                 subtitle="Additive multi-criteria planning points",
-                color="#2563EB",
+                color="#3E6B89",
             ),
             unsafe_allow_html=True,
         )
@@ -93,7 +93,7 @@ def render_kpi_metrics(result: Dict[str, Any], zones_count: int) -> None:
                 label="Feasible Portfolios",
                 value=f"{feasible_count} / {evaluated_count}",
                 subtitle="Budget-feasible combinations evaluated",
-                color="#7C3AED",
+                color="#6B5B7B",
             ),
             unsafe_allow_html=True,
         )

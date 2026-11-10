@@ -44,18 +44,23 @@ def render_score_breakdown(score_breakdown: Dict[str, float]) -> None:
     )
 
     fig.update_layout(
-        title="Weighted Resilience Score by Dimension",
-        xaxis_title="Relative Benefit Points (Illustrative Planning Points)",
-        yaxis=dict(autorange="reversed"),
+        title=dict(
+            text="Weighted Resilience Score by Dimension",
+            font=dict(family="Newsreader, Georgia, serif", size=18, color="#252B27"),
+        ),
+        xaxis_title=dict(
+            text="Relative Benefit Points (Illustrative Planning Points)",
+            font=dict(family="Inter, sans-serif", size=11, color="#575F59"),
+        ),
+        yaxis=dict(autorange="reversed", tickfont=dict(family="Inter, sans-serif", size=12, color="#252B27")),
         margin=dict(l=10, r=30, t=45, b=30),
         height=320,
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
         font=dict(family="Inter, sans-serif"),
         xaxis=dict(
-            title="Relative Benefit Points (Illustrative Planning Points)",
             showgrid=True,
-            gridcolor="#F1F5F9",
+            gridcolor="#EAE6DC",
             gridwidth=1,
         ),
     )
@@ -74,28 +79,31 @@ def render_budget_donut(total_cost_crore: float, remaining_budget_crore: float) 
                 labels=["Allocated Capital", "Remaining Budget"],
                 values=[total_cost_crore, remaining_budget_crore],
                 hole=0.68,
-                marker=dict(colors=[COLORS["accent"], "#CBD5E1"]),
+                marker=dict(colors=[COLORS["primary"], "#DCD7CC"]),
                 text=[f"₹{total_cost_crore:.2f} Cr", f"₹{remaining_budget_crore:.2f} Cr"],
                 textinfo="text",
                 textposition="inside",
                 insidetextorientation="horizontal",
                 hoverinfo="label+text+percent",
-                textfont=dict(size=12, color=["#FFFFFF", "#0F172A"], family="Inter, sans-serif"),
+                textfont=dict(size=12, color=["#FFFFFF", "#252B27"], family="Inter, sans-serif"),
                 sort=False,
             )
         ]
     )
 
     fig.add_annotation(
-        text=f"<b>₹{total_cost_crore:.2f} Cr</b><br><span style='font-size:11px;color:#64748B;'>Allocated ({alloc_pct:.0f}%)</span>",
+        text=f"<b>₹{total_cost_crore:.2f} Cr</b><br><span style='font-size:11px;color:#575F59;'>Allocated ({alloc_pct:.0f}%)</span>",
         x=0.5,
         y=0.5,
-        font=dict(size=14, family="Inter, sans-serif", color="#0F172A"),
+        font=dict(size=14, family="Newsreader, Georgia, serif", color="#252B27"),
         showarrow=False,
     )
 
     fig.update_layout(
-        title="Budget Utilization",
+        title=dict(
+            text="Budget Utilization",
+            font=dict(family="Newsreader, Georgia, serif", size=18, color="#252B27"),
+        ),
         margin=dict(l=10, r=10, t=45, b=25),
         showlegend=True,
         legend=dict(
@@ -104,7 +112,7 @@ def render_budget_donut(total_cost_crore: float, remaining_budget_crore: float) 
             y=-0.15,
             xanchor="center",
             x=0.5,
-            font=dict(size=11, family="Inter, sans-serif"),
+            font=dict(size=11, family="Inter, sans-serif", color="#575F59"),
         ),
         height=320,
         plot_bgcolor="rgba(0,0,0,0)",
@@ -167,7 +175,7 @@ def build_scenario_comparison_chart(scenario_df: pd.DataFrame) -> go.Figure:
             x=scenario_df["Policy Preset"],
             y=scenario_df["Allocated Cost (₹ Cr)"],
             name="Capital Cost (₹ Cr)",
-            marker_color=COLORS["accent"],
+            marker_color=COLORS["terracotta"],
             text=[f"₹{v:.1f}Cr" for v in scenario_df["Allocated Cost (₹ Cr)"]],
             textposition="auto",
             hovertemplate="<b>%{x}</b><br>Capital Cost: ₹%{y:.2f} Cr<extra></extra>",
@@ -178,27 +186,41 @@ def build_scenario_comparison_chart(scenario_df: pd.DataFrame) -> go.Figure:
 
     fig.update_layout(
         barmode="group",
-        title="Score & Capital Cost by Policy Preset (Dual Y-Axis)",
+        title=dict(
+            text="Score & Capital Cost by Policy Preset (Dual Y-Axis)",
+            font=dict(family="Newsreader, Georgia, serif", size=18, color="#252B27"),
+        ),
         margin=dict(l=10, r=10, t=45, b=10),
         height=340,
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
         font=dict(family="Inter, sans-serif"),
-        xaxis=dict(showgrid=False),
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        xaxis=dict(showgrid=False, tickfont=dict(family="Inter, sans-serif", size=11, color="#252B27")),
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right",
+            x=1,
+            font=dict(family="Inter, sans-serif", size=11, color="#575F59"),
+        ),
     )
 
     fig.update_yaxes(
         title_text="Resilience Score (Relative Points)",
         secondary_y=False,
         showgrid=True,
-        gridcolor="#F1F5F9",
+        gridcolor="#EAE6DC",
+        title_font=dict(family="Inter, sans-serif", size=11, color="#575F59"),
+        tickfont=dict(family="Inter, sans-serif", size=11, color="#575F59"),
     )
 
     fig.update_yaxes(
         title_text="Allocated Cost (₹ Crore)",
         secondary_y=True,
         showgrid=False,
+        title_font=dict(family="Inter, sans-serif", size=11, color="#575F59"),
+        tickfont=dict(family="Inter, sans-serif", size=11, color="#575F59"),
     )
 
     return fig

@@ -47,27 +47,33 @@ def main():
     # Inject global design system CSS
     inject_custom_css()
 
-    # 1. Styled Application Hero Header
+    # 1. Styled Application Hero Header — Civic Architectural Editorial
     st.markdown(
         """
-        <div style="padding: 8px 0 4px;">
+        <div style="padding: 12px 0 8px; border-bottom: 1px solid #DCD7CC; margin-bottom: 24px;">
+            <div style="font-family: 'Inter', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #575F59; font-weight: 600; margin-bottom: 4px;">
+                MUNICIPAL DECISION AID &nbsp;·&nbsp; URBAN RESILIENCE &amp; CAPITAL ALLOCATION
+            </div>
             <h1 style="
-                font-size: 32px;
-                font-weight: 700;
-                color: #0F172A;
-                margin: 0 0 4px;
-                font-family: 'Inter', sans-serif;
+                font-size: 34px;
+                font-weight: 600;
+                color: #252B27;
+                margin: 0 0 6px;
+                font-family: 'Newsreader', Georgia, serif;
+                letter-spacing: -0.015em;
+                line-height: 1.2;
             ">
-                🌿 Pune Climate Adaptation Investment Prioritization
+                Pune Climate Adaptation Investment Prioritization
             </h1>
             <p style="
                 font-size: 15px;
-                color: #64748B;
+                color: #575F59;
                 margin: 0;
                 font-family: 'Inter', sans-serif;
+                line-height: 1.5;
             ">
-                PCCOE International Grand Challenge 2026 &nbsp;·&nbsp; AI for Climate Change
-                &nbsp;·&nbsp; <em>Where should the next ₹10 Crore go to make Pune more climate-resilient?</em>
+                PCCOE International Grand Challenge 2026 &nbsp;·&nbsp; Theme: AI for Climate Change
+                &nbsp;·&nbsp; <span style="color: #426B52; font-style: italic;">Where should the next ₹10 Crore go to make Pune more climate-resilient?</span>
             </p>
         </div>
         """,
@@ -88,23 +94,23 @@ def main():
     with st.sidebar:
         st.markdown(
             """
-            <div style="padding: 4px 0 12px;">
+            <div style="padding: 4px 0 12px; border-bottom: 1px solid #DCD7CC; margin-bottom: 14px;">
                 <h2 style="
-                    font-size: 18px;
-                    font-weight: 700;
-                    color: #0F172A;
+                    font-size: 19px;
+                    font-weight: 600;
+                    color: #252B27;
                     margin: 0;
-                    font-family: 'Inter', sans-serif;
+                    font-family: 'Newsreader', Georgia, serif;
                 ">
-                    🎯 Municipal Planning Controls
+                    Municipal Planning Controls
                 </h2>
                 <p style="
                     font-size: 12px;
-                    color: #64748B;
+                    color: #575F59;
                     margin: 4px 0 0;
                     font-family: 'Inter', sans-serif;
                 ">
-                    Configure municipal capital envelope &amp; objective weighting
+                    Capital envelope &amp; multi-criteria objective weighting
                 </p>
             </div>
             """,
