@@ -1,6 +1,6 @@
 """Ingestion orchestrator coordinating external API retrieval, caching, and fallback."""
 
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import logging
 import statistics
 from typing import Any, Dict, List, Optional
@@ -47,8 +47,11 @@ def get_fallback_live_observation() -> LiveWeatherObservation:
     """Returns an illustrative synthetic weather observation for offline fallback.
 
     Explicitly tagged as 'fallback_simulated' and 'is_live=False'.
+    Generates 7-day forecast dates dynamically relative to current UTC date.
     """
-    now_iso = datetime.now(timezone.utc).isoformat()
+    now = datetime.now(timezone.utc)
+    now_iso = now.isoformat()
+    today = now.date()
     return LiveWeatherObservation(
         source="illustrative_fallback",
         retrieval_timestamp=now_iso,
@@ -65,14 +68,14 @@ def get_fallback_live_observation() -> LiveWeatherObservation:
         weather_description="Mainly clear (Offline Fallback)",
         daily_forecast=[
             DailyForecastItem(
-                date=f"2026-11-{d:02d}",
+                date=(today + timedelta(days=i)).isoformat(),
                 temp_max_c=31.0,
                 temp_min_c=18.0,
                 precipitation_sum_mm=0.0,
                 precipitation_hours=0.0,
                 precipitation_probability_pct=5,
             )
-            for d in range(10, 17)
+            for i in range(7)
         ],
         data_status="fallback_simulated",
         is_live=False,
