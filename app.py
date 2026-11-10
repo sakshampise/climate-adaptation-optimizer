@@ -15,7 +15,7 @@ from src.data_loader import load_inputs, DataValidationError
 from src.optimizer import solve_portfolio, OBJECTIVE_WEIGHTS, PRESET_DISPLAY_NAMES
 from src.explanations import generate_portfolio_explanation
 from src.map_view import render_spatial_view
-from src.ingestion import fetch_live_climate
+from src.ingestion import fetch_live_climate, fetch_nasa_climatology
 from components.styles import inject_custom_css, section_header_html, COLORS
 from components.provenance import (
     render_provenance_banner,
@@ -47,41 +47,40 @@ def main():
     # Inject global design system CSS
     inject_custom_css()
 
-    # 1. Styled Application Hero Header
+    # 1. Styled Application Hero Header — Civic Architectural Editorial
     st.markdown(
         """
-        <div style="padding: 8px 0 4px;">
+        <div style="padding: 12px 0 8px; border-bottom: 1px solid #DCD7CC; margin-bottom: 24px;">
+            <div style="font-family: 'Inter', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #575F59; font-weight: 600; margin-bottom: 4px;">
+                MUNICIPAL DECISION AID &nbsp;·&nbsp; URBAN RESILIENCE &amp; CAPITAL ALLOCATION
+            </div>
             <h1 style="
-                font-size: 32px;
-                font-weight: 700;
-                color: #0F172A;
-                margin: 0 0 4px;
-                font-family: 'Inter', sans-serif;
+                font-size: 34px;
+                font-weight: 600;
+                color: #252B27;
+                margin: 0 0 6px;
+                font-family: 'Newsreader', Georgia, serif;
+                letter-spacing: -0.015em;
+                line-height: 1.2;
             ">
-                🌿 Pune Climate Adaptation Investment Prioritization
+                Pune Climate Adaptation Investment Prioritization
             </h1>
             <p style="
                 font-size: 15px;
-                color: #64748B;
+                color: #575F59;
                 margin: 0;
                 font-family: 'Inter', sans-serif;
+                line-height: 1.5;
             ">
-                PCCOE International Grand Challenge 2026 &nbsp;·&nbsp; AI for Climate Change
-                &nbsp;·&nbsp; <em>Where should the next ₹10 Crore go to make Pune more climate-resilient?</em>
+                PCCOE International Grand Challenge 2026 &nbsp;·&nbsp; Theme: AI for Climate Change
+                &nbsp;·&nbsp; <span style="color: #426B52; font-style: italic;">Where should the next ₹10 Crore go to make Pune more climate-resilient?</span>
             </p>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    # 2. Provenance Notice Banner
-    render_provenance_banner()
-
-    # 3. Live Environmental Climate Context (Open-Meteo Integration)
-    climate_obs = fetch_live_climate()
-    render_live_climate_card(climate_obs)
-
-    # 4. Ingest and Validate Canonical Data
+    # 2. Ingest and Validate Canonical Data
     try:
         zones_df, projects_df = load_dataset()
     except DataValidationError as err:
@@ -91,27 +90,27 @@ def main():
         st.error(f"❌ Unexpected Error Loading Data: {exc}")
         st.stop()
 
-    # 5. Sidebar: Municipal Planning Parameters
+    # 3. Sidebar: Municipal Planning Parameters
     with st.sidebar:
         st.markdown(
             """
-            <div style="padding: 4px 0 12px;">
+            <div style="padding: 4px 0 12px; border-bottom: 1px solid #DCD7CC; margin-bottom: 14px;">
                 <h2 style="
-                    font-size: 18px;
-                    font-weight: 700;
-                    color: #0F172A;
+                    font-size: 19px;
+                    font-weight: 600;
+                    color: #252B27;
                     margin: 0;
-                    font-family: 'Inter', sans-serif;
+                    font-family: 'Newsreader', Georgia, serif;
                 ">
-                    🎯 Municipal Planning Controls
+                    Municipal Planning Controls
                 </h2>
                 <p style="
                     font-size: 12px;
-                    color: #64748B;
+                    color: #575F59;
                     margin: 4px 0 0;
                     font-family: 'Inter', sans-serif;
                 ">
-                    Configure municipal capital envelope &amp; objective weighting
+                    Capital envelope &amp; multi-criteria objective weighting
                 </p>
             </div>
             """,
@@ -148,7 +147,7 @@ def main():
         st.markdown("---")
         st.caption("Exact Deterministic Search: Evaluates all 3⁶ = 729 zone package combinations.")
 
-    # 6. Optimization & Explanation Pipeline Invocation
+    # 4. Optimization & Explanation Pipeline Invocation
     current_result = solve_portfolio(projects_df, budget_crore, objective_id)
     explanation = generate_portfolio_explanation(current_result, zones_df, projects_df)
     selected_df = current_result["selected_projects"]
@@ -156,10 +155,10 @@ def main():
     total_cost = current_result["total_cost_crore"]
     rem_budget = current_result["budget_remaining_crore"]
 
-    # 7. Executive Metrics Row
+    # 5. Executive Metrics Row
     render_kpi_metrics(current_result, len(zones_df))
 
-    # 8. Spatial Allocation & Breakdown Analytics Layout
+    # 6. Spatial Allocation & Breakdown Analytics Layout (Main Decision Workspace)
     col_map, col_charts = st.columns([7, 5])
     with col_map:
         st.markdown(
@@ -176,22 +175,35 @@ def main():
         render_score_breakdown(current_result["score_breakdown"])
         render_budget_donut(total_cost, rem_budget)
 
-    # 9. Selected Portfolio Table, Explanations & CSV Export
+    # 7. Selected Portfolio Table, Explanations & CSV Export
     render_selected_portfolio(selected_df, explanation, objective_id, budget_crore)
 
-    # 10. Multi-Scenario Policy Comparison Matrix
+    # 8. Multi-Scenario Policy Comparison Matrix
     st.markdown(
         section_header_html("⚖️", "Multi-Scenario Policy Comparison"),
         unsafe_allow_html=True,
     )
     render_scenario_comparison(projects_df, budget_crore)
 
-    # 11. Baseline Fixtures & Methodology Explorer Tabs
+    # 9. Climate Intelligence & Environmental Context
+    st.markdown(
+        section_header_html("🌦️", "Live Climate Intelligence (Open-Meteo)"),
+        unsafe_allow_html=True,
+    )
+    climate_obs = fetch_live_climate()
+    render_live_climate_card(climate_obs)
+
+    # 10. Baseline Fixtures & Methodology Explorer Tabs (including NASA POWER)
     st.markdown(
         section_header_html("📚", "Baseline Datasets & Methodology"),
         unsafe_allow_html=True,
     )
-    render_dataset_tabs(zones_df, projects_df)
+    climatology_summary = fetch_nasa_climatology(use_cache=True)
+    render_dataset_tabs(zones_df, projects_df, climatology=climatology_summary)
+
+    # 11. Data Provenance & Advisory Notice Banner (Bottom Policy Footer)
+    st.markdown("---")
+    render_provenance_banner()
 
 
 if __name__ == "__main__":

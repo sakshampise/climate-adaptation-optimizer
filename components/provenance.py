@@ -5,10 +5,10 @@ data freshness indicators, and explicit data boundary disclaimers separating
 real-time meteorological observations from illustrative municipal planning fixtures.
 """
 
-from typing import Optional
+from typing import Optional, Dict, Any
 import streamlit as st
 import pandas as pd
-from src.ingestion.schemas import LiveWeatherObservation
+from src.ingestion.schemas import LiveWeatherObservation, NasaClimatologySummary
 
 
 def render_provenance_banner() -> None:
@@ -135,23 +135,132 @@ def render_live_climate_card(obs: LiveWeatherObservation) -> None:
         )
 
 
-def render_dataset_tabs(zones_df: pd.DataFrame, projects_df: pd.DataFrame) -> None:
-    """Renders interactive tabs displaying baseline planning zones and project packages catalog."""
-    tab_z, tab_p = st.tabs([
+def render_dataset_tabs(
+    zones_df: pd.DataFrame,
+    projects_df: pd.DataFrame,
+    climatology: Optional[NasaClimatologySummary] = None,
+) -> None:
+    """Renders interactive tabs displaying baseline planning zones, project packages catalog, and climatology."""
+    tab_titles = [
         "📍 6 Planning Zones (Baseline Indicators)",
         "🛠️ 12 Intervention Packages (Candidate Catalog)",
-    ])
+    ]
+    if climatology is not None:
+        tab_titles.append("🏛️ Regional Climatology (NASA POWER)")
 
-    with tab_z:
+    tabs = st.tabs(tab_titles)
+
+    with tabs[0]:
         st.dataframe(zones_df, use_container_width=True, hide_index=True)
         st.caption(
             "All zone indicators are illustrative planning values (data_status: simulated). "
             "See data/sources.md for methodology notes."
         )
 
-    with tab_p:
+    with tabs[1]:
         st.dataframe(projects_df, use_container_width=True, hide_index=True)
         st.caption(
             "Intervention costs and benefit scores are illustrative estimates. "
             "See individual source_note fields for derivation basis."
         )
+
+    if climatology is not None:
+        with tabs[2]:
+            render_nasa_climatology_card(climatology)
+
+
+def render_nasa_climatology_card(clim: NasaClimatologySummary) -> None:
+    """Renders NASA POWER multi-decadal solar and surface climatology baseline card with full provenance disclosures."""
+    is_fallback = clim.data_status == "fallback_simulated"
+    is_cached = clim.data_status == "cached" or clim.cache_hit
+
+    if clim.data_status == "verified_climatology" and not clim.cache_hit:
+        status_badge = "🟢 **NASA POWER Climatology Connected** (Direct Feed)"
+        status_color = "#00CC96"
+    elif is_cached:
+        status_badge = "🟡 **Cached Climatology Baseline** (NASA POWER 30-day Cache)"
+        status_color = "#FFA15A"
+    else:
+        status_badge = "🟠 **Offline Climatology Fallback** (Illustrative Baseline)"
+        status_color = "#AB63FA"
+
+    st.markdown(
+        f"#### 🏛️ Regional Climatological Baseline | "
+        f"<span style='color:{status_color}; font-size:0.9rem;'>{status_badge}</span>",
+        unsafe_allow_html=True,
+    )
+
+    if is_fallback:
+        st.warning(
+            "⚠️ **OFFLINE FALLBACK ACTIVE:** NASA POWER API connection is unavailable and no local cache was found. "
+            "Climatological figures below are **illustrative synthetic estimates**."
+        )
+
+    metric_suffix = " (Simulated)" if is_fallback else ""
+
+    solar = clim.solar_irradiance
+    temp = clim.surface_temperature
+    precip = clim.precipitation
+
+    # Determine peak values for display
+    solar_peak_val = max((v for v in solar.monthly_values.values() if v is not None), default=7.08)
+    temp_peak_val = max((v for v in temp.monthly_values.values() if v is not None), default=31.56)
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric(
+            f"☀️ Peak Solar Irradiance{metric_suffix}",
+            f"{solar_peak_val:.2f} {solar.units}",
+            delta=f"Annual Mean: {solar.annual_value:.2f} {solar.units}" if solar.annual_value else None,
+            delta_color="off",
+            help=f"Parameter: {solar.parameter_id} ({solar.long_name}). Native resolution: {solar.native_spatial_resolution}. {solar.aggregation_semantics}.",
+        )
+
+    with col2:
+        st.metric(
+            f"🔥 Peak Ground Skin Temp{metric_suffix}",
+            f"{temp_peak_val:.1f} °{temp.units}",
+            delta=f"Annual Mean: {temp.annual_value:.1f} °{temp.units}" if temp.annual_value else None,
+            delta_color="off",
+            help=f"Parameter: {temp.parameter_id} ({temp.long_name}). Native resolution: {temp.native_spatial_resolution}. {temp.aggregation_semantics}.",
+        )
+
+    with col3:
+        annual_total_str = f"~{clim.annual_cumulative_precipitation_mm:.0f} mm/year"
+        st.metric(
+            f"🌧️ Normal Annual Rainfall{metric_suffix}",
+            annual_total_str,
+            delta=f"Mean Rate: {precip.annual_value:.2f} {precip.units}" if precip.annual_value else None,
+            delta_color="off",
+            help=f"Parameter: {precip.parameter_id} ({precip.long_name}). Native resolution: {precip.native_spatial_resolution}. {precip.aggregation_semantics}.",
+        )
+
+    # Monthly Climatology Breakdown Table
+    with st.expander("📅 Monthly Climatological Normals Breakdown (NASA POWER)", expanded=False):
+        months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+        table_rows = []
+        for m in months:
+            s_val = solar.monthly_values.get(m)
+            t_val = temp.monthly_values.get(m)
+            p_val = precip.monthly_values.get(m)
+            table_rows.append({
+                "Month": m,
+                f"Solar Irradiance ({solar.units})": f"{s_val:.3f}" if s_val is not None else "N/A",
+                f"Ground Skin Temp (°{temp.units})": f"{t_val:.2f}" if t_val is not None else "N/A",
+                f"Daily Precipitation ({precip.units})": f"{p_val:.2f}" if p_val is not None else "N/A",
+            })
+        st.dataframe(pd.DataFrame(table_rows), use_container_width=True, hide_index=True)
+
+    # Mandatory Scientific & Spatial Provenance Disclosures
+    st.info(
+        "ℹ️ **Scientific & Spatial Provenance Disclosures (NASA POWER):**\n\n"
+        f"• **Non-Uniform Spatial Resolution:** Meteorological surface temperature and precipitation originate from **NASA MERRA-2** "
+        f"at **0.50° x 0.625° (~55 km x 65 km)**. Downward solar irradiance originates from **CERES SYN1DEG** at **1.00° x 1.00° (~110 km)**.\n"
+        f"• **Baseline Climatology Period:** Values reflect pre-computed multi-decadal normals (`{solar.climatology_period}`) for Pune centroid ({clim.latitude:.2f}°N, {clim.longitude:.2f}°E).\n"
+        "• **Regional Surface-to-Air Temperature Gradient:** The elevation of Earth Skin Temperature above 2m air temperature "
+        "(e.g., +2.63 °C in April pre-monsoon) reflects the **regional thermodynamic surface-to-air gradient** across a ~3,500 km² mixed rural/urban cell. "
+        "It is **NOT** a measured Urban Heat Island (UHI) intensity; intra-urban micro-climate UHI requires high-resolution spatial sensing.\n"
+        "• **Western Ghats Orographic Smearing:** The 55 km MERRA-2 grid cell extends westward onto the Western Ghats crest, smearing mountain orographic rainfall over the urban valley baseline.\n"
+        "• **Strict Architectural Decoupling:** NASA POWER data provides macro-environmental context only and **does not modify optimizer portfolio selection**, intervention benefit scores, or municipal capital limits."
+    )
