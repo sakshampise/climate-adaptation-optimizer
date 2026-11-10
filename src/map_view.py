@@ -36,10 +36,10 @@ def render_spatial_view(
             plot_df["selected_project"] = "None"
             plot_df["allocated_cost"] = "₹0.00 Cr"
 
-        # Create Plotly Scattermapbox or standard Scatter plot
-        # Use open-street-map free style with zero external token requirement
-        fig = px.scatter_mapbox(
-            plot_df,
+        # Create Plotly map supporting both modern Plotly (>=6.0 scatter_map)
+        # and legacy Plotly (<6.0 scatter_mapbox) with open-street-map tiles
+        map_kwargs = dict(
+            data_frame=plot_df,
             lat="latitude",
             lon="longitude",
             hover_name="label",
@@ -62,9 +62,15 @@ def render_spatial_view(
             size=[26] * len(plot_df),
             zoom=11.2,
             center={"lat": 18.5204, "lon": 73.8567},  # Pune center coordinates
-            mapbox_style="open-street-map",
             height=460,
         )
+
+        if hasattr(px, "scatter_map"):
+            fig = px.scatter_map(**map_kwargs, map_style="open-street-map")
+        elif hasattr(px, "scatter_mapbox"):
+            fig = px.scatter_mapbox(**map_kwargs, mapbox_style="open-street-map")
+        else:
+            raise AttributeError("Installed plotly.express lacks both scatter_map and scatter_mapbox")
 
         fig.update_layout(
             margin={"r": 0, "t": 20, "l": 0, "b": 0},
