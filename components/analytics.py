@@ -48,7 +48,7 @@ def render_score_breakdown(score_breakdown: Dict[str, float]) -> None:
         xaxis_title="Relative Benefit Points (Illustrative Planning Points)",
         yaxis=dict(autorange="reversed"),
         margin=dict(l=10, r=30, t=45, b=30),
-        height=300,
+        height=320,
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
         font=dict(family="Inter, sans-serif"),
@@ -66,34 +66,47 @@ def render_score_breakdown(score_breakdown: Dict[str, float]) -> None:
 def render_budget_donut(total_cost_crore: float, remaining_budget_crore: float) -> None:
     """Renders a donut chart illustrating capital allocation versus remaining budget."""
     total_budget = total_cost_crore + remaining_budget_crore
+    alloc_pct = (total_cost_crore / total_budget * 100.0) if total_budget > 0 else 0.0
 
     fig = go.Figure(
         data=[
             go.Pie(
                 labels=["Allocated Capital", "Remaining Budget"],
                 values=[total_cost_crore, remaining_budget_crore],
-                hole=0.65,
-                marker=dict(colors=[COLORS["accent"], "#E2E8F0"]),
-                textinfo="label+value",
-                hoverinfo="label+value+percent",
-                textfont=dict(size=12),
+                hole=0.68,
+                marker=dict(colors=[COLORS["accent"], "#CBD5E1"]),
+                text=[f"₹{total_cost_crore:.2f} Cr", f"₹{remaining_budget_crore:.2f} Cr"],
+                textinfo="text",
+                textposition="inside",
+                insidetextorientation="horizontal",
+                hoverinfo="label+text+percent",
+                textfont=dict(size=12, color=["#FFFFFF", "#0F172A"], family="Inter, sans-serif"),
+                sort=False,
             )
         ]
     )
 
     fig.add_annotation(
-        text=f"<b>₹{total_budget:.1f} Cr</b>",
+        text=f"<b>₹{total_cost_crore:.2f} Cr</b><br><span style='font-size:11px;color:#64748B;'>Allocated ({alloc_pct:.0f}%)</span>",
         x=0.5,
         y=0.5,
-        font=dict(size=16, family="Inter, sans-serif"),
+        font=dict(size=14, family="Inter, sans-serif", color="#0F172A"),
         showarrow=False,
     )
 
     fig.update_layout(
         title="Budget Utilization",
-        margin=dict(l=10, r=10, t=45, b=10),
-        showlegend=False,
-        height=300,
+        margin=dict(l=10, r=10, t=45, b=25),
+        showlegend=True,
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=-0.15,
+            xanchor="center",
+            x=0.5,
+            font=dict(size=11, family="Inter, sans-serif"),
+        ),
+        height=320,
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
         font=dict(family="Inter, sans-serif"),

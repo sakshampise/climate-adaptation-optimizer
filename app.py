@@ -74,14 +74,7 @@ def main():
         unsafe_allow_html=True,
     )
 
-    # 2. Provenance Notice Banner
-    render_provenance_banner()
-
-    # 3. Live Environmental Climate Context (Open-Meteo Integration)
-    climate_obs = fetch_live_climate()
-    render_live_climate_card(climate_obs)
-
-    # 4. Ingest and Validate Canonical Data
+    # 2. Ingest and Validate Canonical Data
     try:
         zones_df, projects_df = load_dataset()
     except DataValidationError as err:
@@ -91,7 +84,7 @@ def main():
         st.error(f"❌ Unexpected Error Loading Data: {exc}")
         st.stop()
 
-    # 5. Sidebar: Municipal Planning Parameters
+    # 3. Sidebar: Municipal Planning Parameters
     with st.sidebar:
         st.markdown(
             """
@@ -148,7 +141,7 @@ def main():
         st.markdown("---")
         st.caption("Exact Deterministic Search: Evaluates all 3⁶ = 729 zone package combinations.")
 
-    # 6. Optimization & Explanation Pipeline Invocation
+    # 4. Optimization & Explanation Pipeline Invocation
     current_result = solve_portfolio(projects_df, budget_crore, objective_id)
     explanation = generate_portfolio_explanation(current_result, zones_df, projects_df)
     selected_df = current_result["selected_projects"]
@@ -156,10 +149,10 @@ def main():
     total_cost = current_result["total_cost_crore"]
     rem_budget = current_result["budget_remaining_crore"]
 
-    # 7. Executive Metrics Row
+    # 5. Executive Metrics Row
     render_kpi_metrics(current_result, len(zones_df))
 
-    # 8. Spatial Allocation & Breakdown Analytics Layout
+    # 6. Spatial Allocation & Breakdown Analytics Layout (Main Decision Workspace)
     col_map, col_charts = st.columns([7, 5])
     with col_map:
         st.markdown(
@@ -176,23 +169,35 @@ def main():
         render_score_breakdown(current_result["score_breakdown"])
         render_budget_donut(total_cost, rem_budget)
 
-    # 9. Selected Portfolio Table, Explanations & CSV Export
+    # 7. Selected Portfolio Table, Explanations & CSV Export
     render_selected_portfolio(selected_df, explanation, objective_id, budget_crore)
 
-    # 10. Multi-Scenario Policy Comparison Matrix
+    # 8. Multi-Scenario Policy Comparison Matrix
     st.markdown(
         section_header_html("⚖️", "Multi-Scenario Policy Comparison"),
         unsafe_allow_html=True,
     )
     render_scenario_comparison(projects_df, budget_crore)
 
-    # 11. Baseline Fixtures & Methodology Explorer Tabs
+    # 9. Climate Intelligence & Environmental Context
+    st.markdown(
+        section_header_html("🌦️", "Live Climate Intelligence (Open-Meteo)"),
+        unsafe_allow_html=True,
+    )
+    climate_obs = fetch_live_climate()
+    render_live_climate_card(climate_obs)
+
+    # 10. Baseline Fixtures & Methodology Explorer Tabs (including NASA POWER)
     st.markdown(
         section_header_html("📚", "Baseline Datasets & Methodology"),
         unsafe_allow_html=True,
     )
     climatology_summary = fetch_nasa_climatology(use_cache=True)
     render_dataset_tabs(zones_df, projects_df, climatology=climatology_summary)
+
+    # 11. Data Provenance & Advisory Notice Banner (Bottom Policy Footer)
+    st.markdown("---")
+    render_provenance_banner()
 
 
 if __name__ == "__main__":

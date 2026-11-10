@@ -62,7 +62,7 @@ def render_spatial_view(
             size=[25] * len(plot_df),
             zoom=11,
             center={"lat": 18.5204, "lon": 73.8567},  # Pune center coordinates
-            mapbox_style="carto-positron",
+            mapbox_style="open-street-map",
             height=450,
         )
 

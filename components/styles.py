@@ -60,12 +60,23 @@ def inject_custom_css() -> None:
     """
     css_content = f"""
     <style>
-    /* Google Fonts Import: Inter */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    /* Google Fonts Import: Inter & Material Symbols Rounded */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
 
-    /* Global typography and root font assignment */
-    html, body, [class*="css"], [class*="st-"], .stApp {{
+    /* Global typography and root font assignment (excluding Streamlit material icons) */
+    html, body, [class*="css"], [class*="st-"]:not([data-testid="stIconMaterial"]), .stApp {{
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }}
+
+    /* Ensure Material Icons font is preserved for expanders and buttons */
+    [data-testid="stIconMaterial"], .material-symbols-rounded {{
+        font-family: "Material Symbols Rounded", sans-serif !important;
+        font-size: 20px !important;
+        line-height: 1 !important;
+        letter-spacing: normal !important;
+        text-transform: none !important;
+        white-space: nowrap !important;
+        direction: ltr !important;
     }}
 
     /* Main container spacing and layout */
@@ -90,43 +101,54 @@ def inject_custom_css() -> None:
     /* KPI Card styling */
     .kpi-card {{
         background-color: {COLORS["bg_card"]};
-        border-radius: 12px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-        padding: 24px;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+        padding: 16px 18px;
         border-left: 4px solid {COLORS["primary"]};
+        min-height: 125px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-sizing: border-box;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         animation: fadeInUp 0.4s ease-out;
     }}
 
     .kpi-card:hover {{
         transform: translateY(-2px);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
     }}
 
     .kpi-label {{
-        font-size: 12px;
+        font-size: 11px;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.8px;
         color: {COLORS["text_muted"]};
         font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }}
 
     .kpi-icon {{
-        font-size: 20px;
+        font-size: 18px;
         line-height: 1;
+        margin-left: 8px;
+        flex-shrink: 0;
     }}
 
     .kpi-value {{
-        font-size: 32px;
+        font-size: 26px;
         font-weight: 700;
         color: {COLORS["text_primary"]};
-        margin: 8px 0 4px;
-        line-height: 1.2;
+        margin: 6px 0 2px;
+        line-height: 1.15;
     }}
 
     .kpi-subtitle {{
-        font-size: 13px;
+        font-size: 12px;
         color: {COLORS["text_secondary"]};
+        line-height: 1.3;
     }}
 
     /* Section header styling */
