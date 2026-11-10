@@ -25,6 +25,7 @@ from .analytics import (
 from .provenance import (
     render_provenance_banner,
     render_live_climate_card,
+    render_nasa_climatology_card,
     render_dataset_tabs,
 )
 from .exports import (
@@ -61,6 +62,7 @@ __all__ = [
     # provenance
     "render_provenance_banner",
     "render_live_climate_card",
+    "render_nasa_climatology_card",
     "render_dataset_tabs",
     # exports
     "render_portfolio_export",
