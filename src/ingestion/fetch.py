@@ -1,6 +1,6 @@
 """Ingestion orchestrator coordinating external API retrieval, caching, and fallback."""
 
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import logging
 import statistics
 from typing import Any, Dict, List, Optional
@@ -10,9 +10,13 @@ from src.ingestion.schemas import (
     LiveWeatherObservation,
     DailyForecastItem,
     HistoricalClimateSummary,
+    NasaClimatologyParameter,
+    NasaClimatologySummary,
+    DAYS_IN_MONTH,
     get_weather_description,
 )
 from src.integrations.open_meteo import OpenMeteoClient
+from src.integrations.nasa_power import NasaPowerClient
 from src.integrations.base import IntegrationError
 
 logger = logging.getLogger(__name__)
@@ -21,6 +25,30 @@ PUNE_CENTROID_LAT = 18.5204
 PUNE_CENTROID_LON = 73.8567
 LIVE_CACHE_TTL_SECONDS = 1800      # 30 minutes
 HISTORICAL_CACHE_TTL_SECONDS = 86400 * 7  # 7 days
+NASA_CLIMATOLOGY_CACHE_TTL_SECONDS = 86400 * 30  # 30 days
+
+MONTH_KEYS = ("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
+
+NASA_PARAMETER_METADATA_SPEC: Dict[str, Dict[str, str]] = {
+    "ALLSKY_SFC_SW_DWN": {
+        "source_dataset": "SYN1DEG (CERES / GEWEX)",
+        "native_spatial_resolution": "1.00° x 1.00° (~110 km)",
+        "aggregation_semantics": "Day-weighted mean daily downward solar flux (kW-hr/m²/day)",
+        "default_period": "January 2001 - December 2025 (25-year)",
+    },
+    "TS": {
+        "source_dataset": "MERRA2",
+        "native_spatial_resolution": "0.50° x 0.625° (~55 km)",
+        "aggregation_semantics": "Day-weighted annual mean ground skin temperature (°C)",
+        "default_period": "January 2001 - December 2025 (25-year)",
+    },
+    "PRECTOTCORR": {
+        "source_dataset": "MERRA2 (GPCP-adjusted)",
+        "native_spatial_resolution": "0.50° x 0.625° (~55 km)",
+        "aggregation_semantics": "Day-weighted mean daily precipitation rate (mm/day); cumulative annual normal equivalent is ~1,730 mm/year",
+        "default_period": "January 2001 - December 2025 (25-year)",
+    },
+}
 
 
 def _safe_float(val: Any, default: float = 0.0) -> float:
@@ -47,8 +75,11 @@ def get_fallback_live_observation() -> LiveWeatherObservation:
     """Returns an illustrative synthetic weather observation for offline fallback.
 
     Explicitly tagged as 'fallback_simulated' and 'is_live=False'.
+    Generates 7-day forecast dates dynamically relative to current UTC date.
     """
-    now_iso = datetime.now(timezone.utc).isoformat()
+    now = datetime.now(timezone.utc)
+    now_iso = now.isoformat()
+    today = now.date()
     return LiveWeatherObservation(
         source="illustrative_fallback",
         retrieval_timestamp=now_iso,
@@ -65,14 +96,14 @@ def get_fallback_live_observation() -> LiveWeatherObservation:
         weather_description="Mainly clear (Offline Fallback)",
         daily_forecast=[
             DailyForecastItem(
-                date=f"2026-11-{d:02d}",
+                date=(today + timedelta(days=i)).isoformat(),
                 temp_max_c=31.0,
                 temp_min_c=18.0,
                 precipitation_sum_mm=0.0,
                 precipitation_hours=0.0,
                 precipitation_probability_pct=5,
             )
-            for d in range(10, 17)
+            for i in range(7)
         ],
         data_status="fallback_simulated",
         is_live=False,
@@ -383,11 +414,226 @@ def fetch_historical_climate(
 
         return get_fallback_historical_summary()
 
+
+def _safe_nasa_float(val: Any) -> Optional[float]:
+    """Parse numeric float while strictly filtering NASA -999.0 fill values and sentinels."""
+    if val is None or val == -999.0 or val == -999:
+        return None
+    try:
+        f = float(val)
+        return None if f < -900.0 else round(f, 3)
+    except (ValueError, TypeError):
+        return None
+
+
+def parse_nasa_parameter(
+    param_id: str,
+    raw_props: Dict[str, Any],
+    metadata_params: Dict[str, Any],
+    header_info: Dict[str, Any],
+) -> NasaClimatologyParameter:
+    """Parse parameter values and bind parameter-specific source, period, units, and aggregation semantics."""
+    param_meta = metadata_params.get(param_id, {})
+    spec = NASA_PARAMETER_METADATA_SPEC.get(param_id, {})
+
+    # DYNAMIC UNIT EXTRACTION: dynamically bind units returned by API metadata
+    units = param_meta.get("units", "unknown")
+    long_name = param_meta.get("longname", param_id)
+
+    # Documented climatology period from header range or parameter-specific baseline
+    climatology_period = str(header_info.get("range") or spec.get("default_period", "January 2001 - December 2025 (25-year)"))
+
+    param_data = raw_props.get("parameter", {}).get(param_id, {})
+
+    monthly_vals: Dict[str, Optional[float]] = {}
+    for m in MONTH_KEYS:
+        monthly_vals[m] = _safe_nasa_float(param_data.get(m))
+
+    annual_val = _safe_nasa_float(param_data.get("ANN"))
+
+    return NasaClimatologyParameter(
+        parameter_id=param_id,
+        long_name=long_name,
+        units=units,
+        source_dataset=spec.get("source_dataset", "NASA POWER"),
+        native_spatial_resolution=spec.get("native_spatial_resolution", "Native"),
+        climatology_period=climatology_period,
+        aggregation_semantics=spec.get("aggregation_semantics", "Annual mean"),
+        monthly_values=monthly_vals,
+        annual_value=annual_val,
+    )
+
+
+def get_fallback_nasa_climatology() -> NasaClimatologySummary:
+    """Returns an illustrative synthetic NASA POWER climatological baseline for Pune.
+
+    Explicitly tagged as 'fallback_simulated' and 'is_live=False'.
+    """
+    now_iso = datetime.now(timezone.utc).isoformat()
+    return NasaClimatologySummary(
+        source="illustrative_fallback (NASA POWER simulated)",
+        retrieval_timestamp=now_iso,
+        latitude=PUNE_CENTROID_LAT,
+        longitude=PUNE_CENTROID_LON,
+        elevation_m=635.99,
+        solar_irradiance=NasaClimatologyParameter(
+            parameter_id="ALLSKY_SFC_SW_DWN",
+            long_name="All Sky Surface Shortwave Downward Irradiance",
+            units="kW-hr/m^2/day",
+            source_dataset="SYN1DEG (CERES / GEWEX)",
+            native_spatial_resolution="1.00° x 1.00° (~110 km)",
+            climatology_period="January 2001 - December 2025 (25-year)",
+            aggregation_semantics="Day-weighted mean daily downward solar flux (kW-hr/m²/day)",
+            monthly_values={
+                "JAN": 4.989, "FEB": 5.850, "MAR": 6.614, "APR": 7.078,
+                "MAY": 7.017, "JUN": 4.568, "JUL": 3.310, "AUG": 3.384,
+                "SEP": 4.309, "OCT": 5.012, "NOV": 4.896, "DEC": 4.665,
+            },
+            annual_value=5.135,
+        ),
+        surface_temperature=NasaClimatologyParameter(
+            parameter_id="TS",
+            long_name="Earth Skin Temperature",
+            units="C",
+            source_dataset="MERRA2",
+            native_spatial_resolution="0.50° x 0.625° (~55 km)",
+            climatology_period="January 2001 - December 2025 (25-year)",
+            aggregation_semantics="Day-weighted annual mean ground skin temperature (°C)",
+            monthly_values={
+                "JAN": 19.64, "FEB": 23.46, "MAR": 28.06, "APR": 31.56,
+                "MAY": 31.59, "JUN": 26.91, "JUL": 24.44, "AUG": 23.67,
+                "SEP": 23.77, "OCT": 22.78, "NOV": 20.57, "DEC": 18.95,
+            },
+            annual_value=24.61,
+        ),
+        precipitation=NasaClimatologyParameter(
+            parameter_id="PRECTOTCORR",
+            long_name="Precipitation Corrected",
+            units="mm/day",
+            source_dataset="MERRA2 (GPCP-adjusted)",
+            native_spatial_resolution="0.50° x 0.625° (~55 km)",
+            climatology_period="January 2001 - December 2025 (25-year)",
+            aggregation_semantics="Day-weighted mean daily precipitation rate (mm/day); cumulative annual normal equivalent is ~1,730 mm/year",
+            monthly_values={
+                "JAN": 0.03, "FEB": 0.05, "MAR": 0.15, "APR": 0.14,
+                "MAY": 0.84, "JUN": 12.06, "JUL": 16.61, "AUG": 13.19,
+                "SEP": 9.17, "OCT": 3.41, "NOV": 0.73, "DEC": 0.13,
+            },
+            annual_value=4.74,
+        ),
+        data_status="fallback_simulated",
+        is_live=False,
+        cache_hit=False,
+    )
+
+
+def fetch_nasa_climatology(
+    latitude: float = PUNE_CENTROID_LAT,
+    longitude: float = PUNE_CENTROID_LON,
+    client: Optional[NasaPowerClient] = None,
+    cache: Optional[ClimateCache] = None,
+    use_cache: bool = True,
+) -> NasaClimatologySummary:
+    """Fetches multi-decadal solar and surface climatology normals from NASA POWER.
+
+    Coordinates retrieval for:
+    - ALLSKY_SFC_SW_DWN (Surface solar irradiance)
+    - TS (Earth skin / surface temperature)
+    - PRECTOTCORR (Precipitation corrected)
+
+    Args:
+        latitude: Geographic latitude in decimal degrees.
+        longitude: Geographic longitude in decimal degrees.
+        client: Optional NasaPowerClient for testing/mocking.
+        cache: Optional ClimateCache instance.
+        use_cache: Whether to check and write to disk cache.
+
+    Returns:
+        NasaClimatologySummary instance with verified, cached, or fallback status.
+    """
+    cache_inst = cache if cache is not None else ClimateCache()
+    cache_key = f"nasa_power_climatology_{latitude:.4f}_{longitude:.4f}"
+
+    if use_cache:
+        cached_result = cache_inst.get(cache_key)
+        if cached_result is not None:
+            data, _, orig_ts = cached_result
+            try:
+                summary = NasaClimatologySummary.from_dict(data)
+                summary.cache_hit = True
+                summary.data_status = "cached"
+                return summary
+            except Exception as parse_err:
+                logger.warning("Corrupted cached NASA climatology record for %s: %s", cache_key, parse_err)
+
+    client_inst = client if client is not None else NasaPowerClient()
+    fetch_ts = datetime.now(timezone.utc).isoformat()
+
+    try:
+        raw_data = client_inst.fetch_climatology(
+            latitude=latitude,
+            longitude=longitude,
+            parameters=["ALLSKY_SFC_SW_DWN", "TS", "PRECTOTCORR"],
+            community="RE",
+        )
+
+        props = raw_data.get("properties", {})
+        meta_params = raw_data.get("parameters", {})
+        header = raw_data.get("header", {})
+        geometry = raw_data.get("geometry", {})
+        coords = geometry.get("coordinates", [longitude, latitude, 635.99])
+        elevation = float(coords[2]) if len(coords) > 2 else 635.99
+
+        solar = parse_nasa_parameter("ALLSKY_SFC_SW_DWN", props, meta_params, header)
+        surface_temp = parse_nasa_parameter("TS", props, meta_params, header)
+        precip = parse_nasa_parameter("PRECTOTCORR", props, meta_params, header)
+
+        summary = NasaClimatologySummary(
+            source="NASA POWER (MERRA-2 / CERES SYN1DEG)",
+            retrieval_timestamp=fetch_ts,
+            latitude=latitude,
+            longitude=longitude,
+            elevation_m=elevation,
+            solar_irradiance=solar,
+            surface_temperature=surface_temp,
+            precipitation=precip,
+            data_status="verified_climatology",
+            is_live=False,
+            cache_hit=False,
+        )
+
+        if use_cache:
+            cache_inst.set(
+                cache_key,
+                summary.to_dict(),
+                ttl_seconds=NASA_CLIMATOLOGY_CACHE_TTL_SECONDS,
+                retrieval_timestamp=fetch_ts,
+            )
+
+        return summary
+
+    except (IntegrationError, requests.RequestException) as net_err:
+        logger.info("NASA POWER API unavailable (%s); checking stale cache", net_err)
+        stale_result = cache_inst.get_stale(cache_key)
+        if stale_result is not None:
+            data, _, orig_ts = stale_result
+            try:
+                summary = NasaClimatologySummary.from_dict(data)
+                summary.cache_hit = True
+                summary.data_status = "cached"
+                return summary
+            except Exception as stale_err:
+                logger.warning("Failed to parse stale NASA climatology cache for %s: %s", cache_key, stale_err)
+
+        return get_fallback_nasa_climatology()
+
     except Exception as unexpected_err:
         logger.error(
-            "Unexpected error in fetch_historical_climate (%s): %s",
+            "Unexpected error in fetch_nasa_climatology (%s): %s",
             type(unexpected_err).__name__,
             unexpected_err,
             exc_info=True,
         )
-        return get_fallback_historical_summary()
+        return get_fallback_nasa_climatology()
+
+

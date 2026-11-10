@@ -519,3 +519,20 @@ def test_historical_climate_incomplete_days_and_completeness(tmp_path):
 
     # Heat stress day (>= 38.0°C) = 1 (39.5)
     assert summary.heat_stress_days_ge_38c == 1
+
+
+def test_fallback_live_observation_dynamic_forecast_dates():
+    """Verify that get_fallback_live_observation dynamically generates 7-day forecast from current UTC date."""
+    from datetime import datetime, timezone, timedelta
+    obs = get_fallback_live_observation()
+    assert obs.is_live is False
+    assert obs.data_status == "fallback_simulated"
+    assert len(obs.daily_forecast) == 7
+
+    today = datetime.now(timezone.utc).date()
+    expected_dates = [(today + timedelta(days=i)).isoformat() for i in range(7)]
+    actual_dates = [item.date for item in obs.daily_forecast]
+    assert actual_dates == expected_dates
+    assert all(item.temp_max_c == 31.0 for item in obs.daily_forecast)
+    assert all(item.temp_min_c == 18.0 for item in obs.daily_forecast)
+

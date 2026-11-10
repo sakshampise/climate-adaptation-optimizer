@@ -113,3 +113,82 @@ class HistoricalClimateSummary:
     def to_dict(self) -> Dict[str, Any]:
         """Convert summary to serializable dictionary."""
         return asdict(self)
+
+
+DAYS_IN_MONTH: Dict[str, float] = {
+    "JAN": 31.0,
+    "FEB": 28.25,
+    "MAR": 31.0,
+    "APR": 30.0,
+    "MAY": 31.0,
+    "JUN": 30.0,
+    "JUL": 31.0,
+    "AUG": 31.0,
+    "SEP": 30.0,
+    "OCT": 31.0,
+    "NOV": 30.0,
+    "DEC": 31.0,
+}
+
+
+@dataclass(frozen=True)
+class NasaClimatologyParameter:
+    """Represents a single NASA POWER climatological parameter with monthly values and provenance metadata."""
+    parameter_id: str                          # e.g., "ALLSKY_SFC_SW_DWN", "TS", "PRECTOTCORR"
+    long_name: str                             # Descriptive name from API metadata
+    units: str                                 # Dynamically parsed from API response metadata
+    source_dataset: str                        # e.g., "SYN1DEG (CERES / GEWEX)" vs "MERRA2"
+    native_spatial_resolution: str             # e.g., "1.00° x 1.00°" vs "0.50° x 0.625°"
+    climatology_period: str                    # Documented baseline period (e.g. "January 2001 - December 2025")
+    aggregation_semantics: str                 # Annual value mathematical interpretation
+    monthly_values: Dict[str, Optional[float]] # {"JAN": 4.99, ... "DEC": 4.66}
+    annual_value: Optional[float]              # e.g., 5.135 (from "ANN")
+
+
+@dataclass
+class NasaClimatologySummary:
+    """Multi-decadal climatological baseline summary for Pune from NASA POWER."""
+    source: str                                # "NASA POWER (MERRA-2 / CERES SYN1DEG)"
+    retrieval_timestamp: str                   # ISO8601 UTC string
+    latitude: float
+    longitude: float
+    elevation_m: float
+    solar_irradiance: NasaClimatologyParameter # ALLSKY_SFC_SW_DWN
+    surface_temperature: NasaClimatologyParameter # TS
+    precipitation: NasaClimatologyParameter    # PRECTOTCORR
+    data_status: str = "verified_climatology"  # "verified_climatology" | "cached" | "fallback_simulated"
+    is_live: bool = False
+    cache_hit: bool = False
+    provenance_note: str = (
+        "Climatological normals are derived from NASA POWER multi-decadal baselines. "
+        "Solar radiation originates from CERES SYN1DEG at 1.00° resolution; surface temperature "
+        "and precipitation originate from MERRA-2 at 0.50° x 0.625° resolution. "
+        "Does not modify optimizer scoring or portfolio allocation."
+    )
+
+    @property
+    def annual_cumulative_precipitation_mm(self) -> float:
+        """Calculates cumulative annual rainfall normal equivalent from monthly daily rates."""
+        total = 0.0
+        for m, days in DAYS_IN_MONTH.items():
+            rate = self.precipitation.monthly_values.get(m)
+            if rate is not None:
+                total += rate * days
+        return round(total, 1)
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert climatology summary to serializable dictionary."""
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "NasaClimatologySummary":
+        """Reconstruct NasaClimatologySummary from serialized dictionary."""
+        d = dict(data)
+        if isinstance(d.get("solar_irradiance"), dict):
+            d["solar_irradiance"] = NasaClimatologyParameter(**d["solar_irradiance"])
+        if isinstance(d.get("surface_temperature"), dict):
+            d["surface_temperature"] = NasaClimatologyParameter(**d["surface_temperature"])
+        if isinstance(d.get("precipitation"), dict):
+            d["precipitation"] = NasaClimatologyParameter(**d["precipitation"])
+        return cls(**d)
+
