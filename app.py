@@ -15,7 +15,7 @@ from src.data_loader import load_inputs, DataValidationError
 from src.optimizer import solve_portfolio, OBJECTIVE_WEIGHTS, PRESET_DISPLAY_NAMES
 from src.explanations import generate_portfolio_explanation
 from src.map_view import render_spatial_view
-from src.ingestion import fetch_live_climate
+from src.ingestion import fetch_live_climate, fetch_nasa_climatology
 from components.styles import inject_custom_css, section_header_html, COLORS
 from components.provenance import (
     render_provenance_banner,
@@ -191,7 +191,8 @@ def main():
         section_header_html("📚", "Baseline Datasets & Methodology"),
         unsafe_allow_html=True,
     )
-    render_dataset_tabs(zones_df, projects_df)
+    climatology_summary = fetch_nasa_climatology(use_cache=True)
+    render_dataset_tabs(zones_df, projects_df, climatology=climatology_summary)
 
 
 if __name__ == "__main__":
