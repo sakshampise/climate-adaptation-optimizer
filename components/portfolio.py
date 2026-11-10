@@ -2,11 +2,13 @@
 
 Renders executive KPI metrics, selected adaptation package tables,
 and transparent selection/exclusion trade-off narratives.
+Conforms to ADR-009 and the design system in components.styles.
 """
 
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 import streamlit as st
 import pandas as pd
+from .styles import COLORS, kpi_card_html
 from .exports import render_portfolio_export_button
 
 
@@ -38,7 +40,7 @@ def format_portfolio_table(selected_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def render_kpi_metrics(result: Dict[str, Any], zones_count: int) -> None:
-    """Renders 4-column executive KPI metrics row."""
+    """Renders 4-column executive KPI metrics row using styled KPI cards."""
     num_selected = len(result.get("selected_project_ids", []))
     total_cost = result.get("total_cost_crore", 0.0)
     total_score = result.get("total_score", 0.0)
@@ -46,32 +48,76 @@ def render_kpi_metrics(result: Dict[str, Any], zones_count: int) -> None:
     feasible_count = result.get("feasible_portfolio_count", 0)
     evaluated_count = result.get("combinations_evaluated", 729)
 
-    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-    with kpi1:
-        st.metric(
-            "Funded Planning Areas",
-            f"{num_selected} / {zones_count}",
-            help="Number of zones allocated an intervention",
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        st.markdown(
+            kpi_card_html(
+                icon="📍",
+                label="Funded Planning Areas",
+                value=f"{num_selected} / {zones_count}",
+                subtitle="Zones receiving adaptation investment",
+                color=COLORS["primary"],
+            ),
+            unsafe_allow_html=True,
         )
-    with kpi2:
-        st.metric(
-            "Total Capital Allocated",
-            f"₹{total_cost:.2f} Cr",
-            delta=f"-₹{rem_budget:.2f} Cr remaining",
-            delta_color="normal",
+
+    with col2:
+        st.markdown(
+            kpi_card_html(
+                icon="💰",
+                label="Capital Allocated",
+                value=f"₹{total_cost:.2f} Cr",
+                subtitle=f"₹{rem_budget:.2f} Cr remaining of budget",
+                color=COLORS["accent"],
+            ),
+            unsafe_allow_html=True,
         )
-    with kpi3:
-        st.metric(
-            "Resilience Points Score",
-            f"{total_score:.2f} pts",
-            help="Additive multi-criteria planning score",
+
+    with col3:
+        st.markdown(
+            kpi_card_html(
+                icon="📊",
+                label="Resilience Score",
+                value=f"{total_score:.2f} pts",
+                subtitle="Additive multi-criteria planning points",
+                color="#2563EB",
+            ),
+            unsafe_allow_html=True,
         )
-    with kpi4:
-        st.metric(
-            "Feasible Portfolios",
-            f"{feasible_count} / {evaluated_count}",
-            help="Portfolios within budget limit",
+
+    with col4:
+        st.markdown(
+            kpi_card_html(
+                icon="🔍",
+                label="Feasible Portfolios",
+                value=f"{feasible_count} / {evaluated_count}",
+                subtitle="Budget-feasible combinations evaluated",
+                color="#7C3AED",
+            ),
+            unsafe_allow_html=True,
         )
+
+
+def render_selected_portfolio_table(
+    selected_df: pd.DataFrame, explanation_summary: str
+) -> pd.DataFrame:
+    """Render the selected adaptation portfolio data table and summary narrative.
+
+    Backward-compatible wrapper matching Ayush's PR #2 component interface.
+    """
+    st.markdown(f"**Optimization Result:** {explanation_summary}")
+
+    if selected_df.empty:
+        st.warning(
+            "⚠️ No projects could be funded under the entered budget. "
+            "Consider increasing the available budget."
+        )
+        return pd.DataFrame()
+
+    table_df = format_portfolio_table(selected_df)
+    st.dataframe(table_df, use_container_width=True, hide_index=True)
+    return table_df
 
 
 def render_selected_portfolio(
